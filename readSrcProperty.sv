@@ -78,3 +78,5 @@ always_comb begin
     end
   endcase
 end
+
+endmodule
