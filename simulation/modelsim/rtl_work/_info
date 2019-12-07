@@ -1,0 +1,137 @@
+m255
+K4
+z2
+13
+!s112 1.1
+!i10d 8192
+!i10e 25
+!i10f 100
+cModel Technology
+Z0 d/home/andrew/illinois/cs598jl/final_project/simulation/modelsim
+vReadSrcProperty
+Z1 DXx6 sv_std 3 std 0 22 AD7iAPLo6nTIKk<N0eo=D3
+DXx4 work 23 readSrcProperty_sv_unit 0 22 L9HZ[n4UYDfNP9g_mHz;d3
+Z2 VDg1SIo80bB@j0V0VzS_@n1
+r1
+!s85 0
+31
+!i10b 1
+!s100 O[^_nC1L]]W;d7b=deCAL0
+I[350kVi9z^VURW7Id[3ND1
+!s105 readSrcProperty_sv_unit
+S1
+R0
+Z3 w1575699415
+Z4 8/home/andrew/illinois/cs598jl/final_project/readSrcProperty.sv
+Z5 F/home/andrew/illinois/cs598jl/final_project/readSrcProperty.sv
+L0 8
+Z6 OV;L;10.5b;63
+Z7 !s108 1575701280.000000
+Z8 !s107 /home/andrew/illinois/cs598jl/final_project/types.sv|/home/andrew/illinois/cs598jl/final_project/readSrcProperty.sv|
+Z9 !s90 -reportprogress|300|-sv|-work|work|+incdir+/home/andrew/illinois/cs598jl/final_project|/home/andrew/illinois/cs598jl/final_project/readSrcProperty.sv|
+!i113 1
+Z10 o-sv -work work
+Z11 !s92 -sv -work work +incdir+/home/andrew/illinois/cs598jl/final_project
+Z12 tCvgOpt 0
+n@read@src@property
+XreadSrcProperty_sv_unit
+R1
+VL9HZ[n4UYDfNP9g_mHz;d3
+r1
+!s85 0
+31
+!i10b 1
+!s100 jKJgCc]P<keDK0zf;nkAE0
+IL9HZ[n4UYDfNP9g_mHz;d3
+!i103 1
+S1
+R0
+R3
+R4
+R5
+Z13 F/home/andrew/illinois/cs598jl/final_project/types.sv
+L0 6
+R6
+R7
+R8
+R9
+!i113 1
+R10
+R11
+R12
+nread@src@property_sv_unit
+vtb
+R1
+DXx4 work 17 testbench_sv_unit 0 22 2gm9CPN9_m5WCN:3ISA:>1
+R2
+r1
+!s85 0
+31
+!i10b 1
+!s100 DjB<W9P_1^mdNNDg`1me[3
+IJWN7_bP;;`V?4eFdSG6dP3
+!s105 testbench_sv_unit
+S1
+R0
+Z14 w1575701243
+Z15 8/home/andrew/illinois/cs598jl/final_project/testbench.sv
+Z16 F/home/andrew/illinois/cs598jl/final_project/testbench.sv
+L0 8
+R6
+R7
+Z17 !s107 /home/andrew/illinois/cs598jl/final_project/types.sv|/home/andrew/illinois/cs598jl/final_project/testbench.sv|
+Z18 !s90 -reportprogress|300|-sv|-work|work|+incdir+/home/andrew/illinois/cs598jl/final_project|/home/andrew/illinois/cs598jl/final_project/testbench.sv|
+!i113 1
+R10
+R11
+R12
+Xtestbench_sv_unit
+R1
+V2gm9CPN9_m5WCN:3ISA:>1
+r1
+!s85 0
+31
+!i10b 1
+!s100 X?Li18YmH2g5lX_d[7M0o2
+I2gm9CPN9_m5WCN:3ISA:>1
+!i103 1
+S1
+R0
+R14
+R15
+R16
+R13
+L0 6
+R6
+R7
+R17
+R18
+!i113 1
+R10
+R11
+R12
+Xtypes_sv_unit
+R1
+!s110 1575701280
+!i10b 1
+!s100 JRzUICkK9_8Q2FKO15:YO1
+IJaDg3;PKKVY4>2mQgi5Qj3
+VJaDg3;PKKVY4>2mQgi5Qj3
+!i103 1
+S1
+R0
+R3
+8/home/andrew/illinois/cs598jl/final_project/types.sv
+R13
+L0 6
+R6
+r1
+!s85 0
+31
+R7
+!s107 /home/andrew/illinois/cs598jl/final_project/types.sv|
+!s90 -reportprogress|300|-sv|-work|work|+incdir+/home/andrew/illinois/cs598jl/final_project|/home/andrew/illinois/cs598jl/final_project/types.sv|
+!i113 1
+R10
+R11
+R12
