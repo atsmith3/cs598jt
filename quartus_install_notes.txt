@@ -1,0 +1,2 @@
+Modelsim needs a bunch of 32 bit libraries to run:
+sudo apt-get install libxrender1:i386 libxtst6:i386 libxi6:i386

@@ -12,10 +12,10 @@ module tb;
 
   initial begin
     // 2. Let us now read back the data we wrote in the previous step
-    fd = $fopen ("test.csv", "r");
+    fd = $fopen ("/home/andrew/illinois/cs598jl/final_project/test.csv", "r");
 
     // fscanf returns the number of matches
-    while ($fscanf (fd, "%d,%d,%d,%d\n", a, b, c, d) == 2) begin
+    while ($fscanf (fd, "%d,%d,%d,%d\n", a, b, c, d)>0) begin
       $display ("%d,%d,%d,%d\n", a, b, c, d);
     end
 
