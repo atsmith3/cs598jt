@@ -25,10 +25,6 @@ enum logic [1:0] {
 
 pipeline_data_t data;
 
-initial begin
-  state = OP_WAIT;
-end
-
 // FF Logic
 always_ff @(posedge clk) begin
   if(reset==1'b1) begin

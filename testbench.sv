@@ -18,7 +18,7 @@ module tb;
   // Testing Purpose:
   int unsigned a,b,c,d;
   logic [15:0] a_o, b_o, c_o, d_o;
-  string forma_str = "%d,%d,%d,%d,%d\n";
+  string format_str = "%d,%d,%d,%d,%d\n";
 
   int unsigned curr_tick;
   logic clk, reset;
@@ -28,19 +28,19 @@ module tb;
   logic [63:0] mem_data;
 
   // DUT
-  ReadSrcProperty DUT(
-    // Input
-    .clk(clk),
-    .reset(reset),
-    .i_data(in_data),
-    .src_data(mem_data),
-    .ready(ready),
-    .complete(mem_req_complete),
-    .n_stall_can_accept(send),
-    // Output
-    .p_stall_can_accept(),
-    .o_data()
-  );
+//  ReadSrcProperty DUT(
+//    // Input
+//    .clk(clk),
+//    .reset(reset),
+//    .i_data(in_data),
+//    .src_data(mem_data),
+//    .ready(ready),
+//    .complete(mem_req_complete),
+//    .n_stall_can_accept(send),
+//    // Output
+//    .p_stall_can_accept(),
+//    .o_data()
+//  );
 
   initial begin
     tick = 0;
@@ -48,7 +48,8 @@ module tb;
     clk = 0;
     reset = 0;
     // 2. Let us now read back the data we wrote in the previous step
-    fd = $fopen ("/home/andrew/illinois/cs598jl/final_project/test.csv", "r");
+    //fd = $fopen ("/home/andrew/illinois/cs598jl/final_project/test.csv", "r");
+    fd = $fopen ("/home/atsmith3/cs598jt/final_proj/test.csv", "r");
 
     // Read Initial Line:
     if ($fscanf (fd, format_str, tick, a, b, c, d)>0) begin
@@ -57,7 +58,7 @@ module tb;
     else begin
       // Close this file handle
       $fclose(fd);
-      $finish;
+      //$finish;
     end
   end
 
@@ -71,13 +72,13 @@ module tb;
       d_o = d;
       
       // Read in new test vectors 
-      if ($fscanf (fd, format_str, a, b, c, d)>0) begin
-        $display (format_str, a, b, c, d);
+      if ($fscanf (fd, format_str, tick, a, b, c, d)>0) begin
+        $display (format_str, tick, a, b, c, d);
       end
       else begin
         // Close this file handle
         $fclose(fd);
-        $finish;
+        //$finish;
       end
     end
     if(clk == 1'b1) begin
