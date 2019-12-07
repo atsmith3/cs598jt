@@ -36,6 +36,7 @@ always_ff @(posedge clk) begin
 
   if(state==OP_WAIT && ready==1'b1) begin
     data <= i_data;
+  end
 end
 
 assign o_data = data;

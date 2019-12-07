@@ -12,7 +12,7 @@ typedef struct packed {
   logic [63:0] vertex_dst_data;
   logic [63:0] message_data;
   logic [63:0] edge_data;
-  logic [63:0] edge_temp_data;;
+  logic [63:0] edge_temp_data;
   logic last_vertex;
-  logic last_vertex;
-} pipline_data_t;
+  logic last_edge;
+} pipeline_data_t;
