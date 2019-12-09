@@ -8,18 +8,18 @@
 //-----------------------------------------------------------------------------
 // TESTBENCH
 //-----------------------------------------------------------------------------
-`define READ_SRC_PROPERTY
+//`define READ_SRC_PROPERTY
 //`define READ_SRC_EDGES
 //`define READ_DST_PROPERTY
 //`define PROCESS_EDGE
-//`define CONTROL_ATMOMIC_UPDATE
+//`define CONTROL_ATOMIC_UPDATE
 //`define READ_TEMP_DST_PROPERTY
 //`define REDUCE
 //`define WRITE_TEMP_DST_PROPERTY
 //`define READ_VERTEX_PROPERTY
 //`define READ_TEMP_VERTEX_PROPERTY
 //`define APPLY
-//`define WRITE_TEMP_VERTEX_PROPERTY
+`define WRITE_VERTEX_PROPERTY
 
 module tb;
   int unsigned fd;       // Variable for file descriptor handle
@@ -145,10 +145,10 @@ module tb;
   logic complete;
   logic ready; 
 `endif
-`ifdef WRITE_TEMP_DST_PROPERTY
-  string trace_file = "/home/andrew/illinois/cs598jt/final_project/trace/WriteTempVertexProperty_0_in.csv";
+`ifdef WRITE_VERTEX_PROPERTY
+  string trace_file = "/home/andrew/illinois/cs598jt/final_project/trace/WriteVertexProperty_0_in.csv";
   string format_string = "%d,%d,%d,%d,%d,%d,%d,%d,%d,%d,%f,%f,%d,%d,%d,%d,%d,%d\n";
-  sim_event_write_temp_vertex_property_t sim_event;
+  sim_event_write_vertex_property_t sim_event;
   pipeline_data_t in_data;
   logic valid;
   logic mem_flag;
@@ -182,7 +182,7 @@ module tb;
 `ifdef PROCESS_EDGE
 
 `endif
-`ifdef CONTROL_ATMOMIC_UPDATE
+`ifdef CONTROL_ATOMIC_UPDATE
 
 `endif
 `ifdef READ_TEMP_DST_PROPERTY
@@ -203,7 +203,7 @@ module tb;
 `ifdef APPLY
 
 `endif
-`ifdef WRITE_TEMP_VERTEX_PROPERTY
+`ifdef WRITE_VERTEX_PROPERTY
 
 `endif
 
@@ -263,7 +263,7 @@ module tb;
                sim_event.complete, 
                sim_event.ready)>0) begin
 `endif
-`ifdef CONTROL_ATMOMIC_UPDATE
+`ifdef CONTROL_ATOMIC_UPDATE
                sim_event.valid,
                sim_event.ready,
                sim_event.p7_dst_id,
@@ -305,9 +305,9 @@ module tb;
                sim_event.complete, 
                sim_event.ready)>0) begin
 `endif
-`ifdef WRITE_TEMP_VERTEX_PROPERTY
+`ifdef WRITE_VERTEX_PROPERTY
                sim_event.valid, 
-               sim_event.mem_flag
+               sim_event.mem_flag,
                sim_event.address)>0) begin
 `endif
       $display(format_string,
@@ -356,7 +356,7 @@ module tb;
                sim_event.complete, 
                sim_event.ready);
 `endif
-`ifdef CONTROL_ATMOMIC_UPDATE
+`ifdef CONTROL_ATOMIC_UPDATE
                sim_event.valid,
                sim_event.ready,
                sim_event.p7_dst_id,
@@ -398,9 +398,9 @@ module tb;
                sim_event.complete, 
                sim_event.ready);
 `endif
-`ifdef WRITE_TEMP_VERTEX_PROPERTY
+`ifdef WRITE_VERTEX_PROPERTY
                sim_event.valid, 
-               sim_event.mem_flag
+               sim_event.mem_flag,
                sim_event.address);
 `endif
     end
@@ -458,7 +458,7 @@ module tb;
       complete = sim_event.complete[0];
       ready = sim_event.ready[0];
 `endif
-`ifdef CONTROL_ATMOMIC_UPDATE
+`ifdef CONTROL_ATOMIC_UPDATE
       valid = sim_event.valid[0];
       ready = sim_event.ready[0];
       p7_dst_id = sim_event.p7_dst_id;
@@ -500,7 +500,7 @@ module tb;
       complete = sim_event.complete[0];
       ready = sim_event.ready[0];
 `endif
-`ifdef WRITE_TEMP_VERTEX_PROPERTY
+`ifdef WRITE_VERTEX_PROPERTY
       valid = sim_event.valid[0];
       mem_flag = sim_event.mem_flag[0];
       address = sim_event.address;
@@ -555,7 +555,7 @@ module tb;
                sim_event.complete, 
                sim_event.ready)>0) begin
 `endif
-`ifdef CONTROL_ATMOMIC_UPDATE
+`ifdef CONTROL_ATOMIC_UPDATE
                sim_event.valid,
                sim_event.ready,
                sim_event.p7_dst_id,
@@ -597,9 +597,9 @@ module tb;
                sim_event.complete, 
                sim_event.ready)>0) begin
 `endif
-`ifdef WRITE_TEMP_VERTEX_PROPERTY
+`ifdef WRITE_VERTEX_PROPERTY
                sim_event.valid, 
-               sim_event.mem_flag
+               sim_event.mem_flag,
                sim_event.address)>0) begin
 `endif
           $display(format_string,
@@ -648,7 +648,7 @@ module tb;
                sim_event.complete, 
                sim_event.ready);
 `endif
-`ifdef CONTROL_ATMOMIC_UPDATE
+`ifdef CONTROL_ATOMIC_UPDATE
                sim_event.valid,
                sim_event.ready,
                sim_event.p7_dst_id,
@@ -690,9 +690,9 @@ module tb;
                sim_event.complete, 
                sim_event.ready);
 `endif
-`ifdef WRITE_TEMP_VERTEX_PROPERTY
+`ifdef WRITE_VERTEX_PROPERTY
                sim_event.valid, 
-               sim_event.mem_flag
+               sim_event.mem_flag,
                sim_event.address);
 `endif
         end

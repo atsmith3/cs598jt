@@ -139,7 +139,7 @@ typedef struct {
   pd_t pipeline_data;
   int unsigned valid;
   int unsigned mem_flag;
-} sim_event_write_tmp_dst_property_t;
+} sim_event_write_temp_dst_property_t;
 
 
 //
