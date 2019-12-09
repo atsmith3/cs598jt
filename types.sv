@@ -79,7 +79,6 @@ typedef struct {
   int unsigned mem_result; 
 } sim_event_read_dst_property_t;
 
-//`define READ_SRC_PROPERTY_FS "%d,%d,%d,%d,%d,%d,%d,%d,%d,%d,%lf,%lf,%d,%d,%d,%d,%d,%d,%d\n"
 
 //
 // PROCESS EDGE
@@ -92,7 +91,6 @@ typedef struct {
   int unsigned ready;
 } sim_event_process_edge_t;
 
-//`define READ_SRC_PROPERTY_FS "%d,%d,%d,%d,%d,%d,%d,%d,%d,%d,%lf,%lf,%d,%d,%d,%d,%d,%d\n"
 
 //
 // CONTROL ATOMIC UPDATE
@@ -107,7 +105,6 @@ typedef struct {
   int unsigned p9_dst_id;
 } sim_event_control_atomic_update_t;
 
-//`define READ_SRC_PROPERTY_FS "%d,%d,%d,%d,%d,%d,%d,%d,%d,%d,%lf,%lf,%d,%d,%d,%d,%d,%d,%d,%d\n"
 
 //
 // READ TEMPORARY DESTINATION PROPERTY
@@ -121,7 +118,6 @@ typedef struct {
   int unsigned mem_result; 
 } sim_event_read_temp_dst_property_t;
 
-//`define READ_SRC_PROPERTY_FS "%d,%d,%d,%d,%d,%d,%d,%d,%d,%d,%lf,%lf,%d,%d,%d,%d,%d,%d,%d\n"
 
 //
 // REDUCE
@@ -134,7 +130,6 @@ typedef struct {
   int unsigned ready;
 } sim_event_reduce_t;
 
-//`define READ_SRC_PROPERTY_FS "%d,%d,%d,%d,%d,%d,%d,%d,%d,%d,%lf,%lf,%d,%d,%d,%d,%d,%d\n"
 
 //
 // WRITE TEMPORARY DESTINATION PROPERTY
@@ -146,7 +141,6 @@ typedef struct {
   int unsigned mem_flag;
 } sim_event_write_tmp_dst_property_t;
 
-//`define WRITE_TEMP_DST_PROPERTY_FS "%d,%d,%d,%d,%d,%d,%d,%d,%d,%d,%lf,%lf,%d,%d,%d,%d,%d\n"
 
 //
 // READ VERTEX PROPERTY
@@ -163,7 +157,6 @@ typedef struct {
   int unsigned iteration_reset;
 } sim_event_read_vertex_property_t;
 
-//string sim_event_read_vertex_property_format_str = "%d,%d,%d,%d,%d,%d,%d,%d,%d,%d,%lf,%lf,%d,%d,%d,%d,%d,%d,%d,%d,%d,%d\n";
 
 //
 // READ TEMPORARY VERTEX PROPERTY
@@ -177,7 +170,6 @@ typedef struct {
   int unsigned mem_result; 
 } sim_event_read_temp_vertex_property_t;
 
-//string sim_event_read_temp_vertex_property_format_str = "%d,%d,%d,%d,%d,%d,%d,%d,%d,%d,%lf,%lf,%d,%d,%d,%d,%d,%d,%d\n";
 
 //
 // APPLY
@@ -190,7 +182,6 @@ typedef struct {
   int unsigned ready;
 } sim_event_apply_t;
 
-//string sim_event_apply_format_str = "%d,%d,%d,%d,%d,%d,%d,%d,%d,%d,%lf,%lf,%d,%d,%d,%d,%d,%d\n";
 
 //
 // WRITE TEMPORARY DESTINATION PROPERTY
@@ -202,5 +193,3 @@ typedef struct {
   int unsigned mem_flag;
   int unsigned address;
 } sim_event_write_vertex_property_t;
-
-//string sim_event_write_vertex_property_format_str = "%d,%d,%d,%d,%d,%d,%d,%d,%d,%d,%lf,%lf,%d,%d,%d,%d,%d,%d\n";
