@@ -47,8 +47,7 @@ typedef struct {
   int unsigned mem_flag;
   int unsigned ready;
   int unsigned mem_result; 
-  int unsigned address;
-  int unsigned queue_length;
+  int unsigned address; int unsigned queue_length;
   int unsigned iteration_reset;
 } sim_event_read_src_property_t;
 

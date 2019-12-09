@@ -72,5 +72,4 @@ PLLJ_PLLSPE_INFO.txt
 *.swp
 
 trace/*
-simulation/modelsim/vsim.wlf
-simulation/modelsim/msim_transcript
+simulation/modelsim/*
