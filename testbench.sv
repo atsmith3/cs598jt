@@ -48,7 +48,7 @@ module tb;
     clk = 0;
     reset = 0;
     // 2. Let us now read back the data we wrote in the previous step
-    //fd = $fopen ("/home/andrew/illinois/cs598jl/final_project/test.csv", "r");
+    //fd = $fopen ("/home/andrew/illinois/cs598jt/final_project/test.csv", "r");
     fd = $fopen ("/home/atsmith3/cs598jt/final_proj/test.csv", "r");
 
     // Read Initial Line:

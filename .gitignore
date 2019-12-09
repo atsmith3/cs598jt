@@ -70,3 +70,5 @@ PLLJ_PLLSPE_INFO.txt
 
 # Vim
 *.swp
+
+trace/*
