@@ -3,9 +3,9 @@
 //12072019
 
 `include "types.sv"
-//`define P5
+`define P5
 //`define P8
-`define A3
+//`define A3
 
 module comp #(
     parameter data_width = 64
@@ -38,7 +38,9 @@ logic [data_width*2-1:0] data_i;
 logic [data_width*2-1:0] data_i_reg = '{default: '0};
 logic [data_width-1:0] data_result;
 //comment flag if not needed
+`ifdef A3
 logic flag_result;
+`endif
 
 assign data_i = {data_a, data_b};
 logic empty_i;

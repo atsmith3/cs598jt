@@ -37,13 +37,28 @@ logic [input_width-1:0] data_i_reg = '{default: '0};
 logic [output_width-1:0] data_o_reg = '{default: '0};
 logic empty_i, empty_o;
 
-assign ready_o = empty_i ? (empty_o ? 1'b1 : ready_i) : 1'b0;
-assign mem_read = (~empty_i) ? (empty_o ? 1'b1 : ready_i) : 1'b0;
+logic [addr_width-1:0] mem_addr_int;
+logic mem_read_int;
 
-assign mem_addr = data_i_reg;
+assign ready_o = empty_i ? (empty_o ? 1'b1 : ready_i) : 1'b0;
+assign mem_read_int = (~empty_i) ? (empty_o ? 1'b1 : ready_i) : 1'b0;
+
+assign mem_addr_int = data_i_reg;
 
 assign valid_o = empty_o;
 assign data_o = data_o_reg; // be careful about the width
+
+// output buffer for mem_addr and mem_read
+always_ff @(posedge clk) begin
+    if (rst) begin
+        mem_addr <= '0;
+        mem_read <= 1'b0;
+    end
+    else begin
+        mem_addr <= mem_addr_int;
+        mem_read <= mem_read_int;
+    end
+end
 
 // input stage
 always_ff @(posedge clk) begin

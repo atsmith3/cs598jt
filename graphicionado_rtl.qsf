@@ -39,7 +39,7 @@
 
 set_global_assignment -name FAMILY "Stratix IV"
 set_global_assignment -name DEVICE AUTO
-set_global_assignment -name TOP_LEVEL_ENTITY seq_mem_module
+set_global_assignment -name TOP_LEVEL_ENTITY comp
 set_global_assignment -name ORIGINAL_QUARTUS_VERSION 19.1.0
 set_global_assignment -name PROJECT_CREATION_TIME_DATE "22:13:55  DECEMBER 03, 2019"
 set_global_assignment -name LAST_QUARTUS_VERSION "18.1.0 Standard Edition"
@@ -61,13 +61,18 @@ set_global_assignment -name EDA_NATIVELINK_SIMULATION_TEST_BENCH tb -section_id 
 set_global_assignment -name EDA_TEST_BENCH_NAME tb -section_id eda_simulation
 set_global_assignment -name EDA_DESIGN_INSTANCE_NAME NA -section_id tb
 set_global_assignment -name EDA_TEST_BENCH_MODULE_NAME tb -section_id tb
-set_global_assignment -name PARTITION_NETLIST_TYPE SOURCE -section_id Top
-set_global_assignment -name PARTITION_FITTER_PRESERVATION_LEVEL PLACEMENT_AND_ROUTING -section_id Top
-set_global_assignment -name PARTITION_COLOR 16764057 -section_id Top
 set_global_assignment -name EDA_TEST_BENCH_FILE testbench.sv -section_id tb
 set_global_assignment -name TIMING_ANALYZER_MULTICORNER_ANALYSIS ON
 set_global_assignment -name NUM_PARALLEL_PROCESSORS 1
-set_global_assignment -name SDC_FILE graphicionado_rtl.out.sdc
+set_global_assignment -name POWER_USE_INPUT_FILES ON
+set_global_assignment -name POWER_DEFAULT_INPUT_IO_TOGGLE_RATE "12.5 %"
+set_global_assignment -name POWER_REPORT_SIGNAL_ACTIVITY ON
+set_global_assignment -name POWER_REPORT_POWER_DISSIPATION ON
+set_global_assignment -name FLOW_ENABLE_POWER_ANALYZER OFF
+set_global_assignment -name PARTITION_NETLIST_TYPE SOURCE -section_id Top
+set_global_assignment -name PARTITION_FITTER_PRESERVATION_LEVEL PLACEMENT_AND_ROUTING -section_id Top
+set_global_assignment -name PARTITION_COLOR 16764057 -section_id Top
+set_global_assignment -name SDC_FILE p5.sdc
 set_global_assignment -name SYSTEMVERILOG_FILE mem_write.sv
 set_global_assignment -name SYSTEMVERILOG_FILE readSrcProperty.sv
 set_global_assignment -name SYSTEMVERILOG_FILE types.sv
@@ -78,10 +83,6 @@ set_global_assignment -name SYSTEMVERILOG_FILE seq_mem.sv
 set_global_assignment -name SYSTEMVERILOG_FILE dep_check.sv
 set_global_assignment -name SYSTEMVERILOG_FILE comp.sv
 set_global_assignment -name SYSTEMVERILOG_FILE random_mem_read.sv
-set_global_assignment -name POWER_USE_INPUT_FILES ON
-set_global_assignment -name POWER_DEFAULT_INPUT_IO_TOGGLE_RATE "12.5 %"
-set_global_assignment -name POWER_REPORT_SIGNAL_ACTIVITY ON
-set_global_assignment -name POWER_REPORT_POWER_DISSIPATION ON
-set_global_assignment -name POWER_INPUT_FILE_NAME simulation/modelsim/p1.vcd -section_id p1.vcd
-set_instance_assignment -name POWER_READ_INPUT_FILE p1.vcd -to seq_mem_module
+set_global_assignment -name POWER_INPUT_FILE_NAME simulation/modelsim/p5.vcd -section_id p5.vcd
+set_instance_assignment -name POWER_READ_INPUT_FILE p5.vcd -to comp
 set_instance_assignment -name PARTITION_HIERARCHY root_partition -to | -section_id Top

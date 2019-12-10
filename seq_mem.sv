@@ -5,10 +5,10 @@
 `include "types.sv"
 
 module seq_mem_module #(
-    parameter addr_width = 64//64
-    ,parameter cntr_width = 64//64
+    parameter addr_width = 64
+    ,parameter cntr_width = 64
     ,parameter input_width = addr_width + cntr_width
-    ,parameter data_width = 64//64
+    ,parameter data_width = 64
     ,parameter output_width = data_width + 1
     ,parameter addr_inc = 4
     )

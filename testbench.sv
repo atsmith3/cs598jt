@@ -8,10 +8,10 @@
 //-----------------------------------------------------------------------------
 // TESTBENCH
 //-----------------------------------------------------------------------------
-`define READ_SRC_PROPERTY
+//`define READ_SRC_PROPERTY
 //`define READ_SRC_EDGES
 //`define READ_DST_PROPERTY
-//`define PROCESS_EDGE
+`define PROCESS_EDGE
 //`define CONTROL_ATOMIC_UPDATE
 //`define READ_TEMP_DST_PROPERTY
 //`define REDUCE
@@ -61,7 +61,7 @@ timeprecision 1ns;
   logic [63:0] num_edges;
 `endif
 `ifdef READ_DST_PROPERTY
-  string trace_file = "trace/ReadDstProperty_0_0_in.csv";
+  string trace_file = "/home/jliu128/cs598/cs598jt/trace/ReadDstProperty_0_0_in.csv";
   string format_string = "%d,%d,%d,%d,%d,%d,%d,%d,%d,%d,%f,%f,%d,%d,%d,%d,%d,%d,%d\n";
   sim_event_read_dst_property_t sim_event;
   pipeline_data_t in_data;
@@ -71,7 +71,7 @@ timeprecision 1ns;
   logic [63:0] mem_result; 
 `endif
 `ifdef PROCESS_EDGE
-  string trace_file = "trace/ProcessEdge_0_in.csv";
+  string trace_file = "/home/jliu128/cs598/cs598jt/trace/ProcessEdge_0_in.csv";
   string format_string = "%d,%d,%d,%d,%d,%d,%d,%d,%d,%d,%f,%f,%d,%d,%d,%d,%d,%d\n";
   sim_event_process_edge_t sim_event;
   pipeline_data_t in_data;
@@ -197,10 +197,34 @@ seq_mem_module P1 (
 
 `endif
 `ifdef READ_DST_PROPERTY
-
+rand_mem_read_module P4 (
+    .clk(clk)
+    ,.rst(reset)
+    ,.data_i(mem_result)
+    ,.valid_i(valid)
+    ,.ready_o()
+    ,.mem_read()
+    ,.mem_addr()
+    ,.mem_resp(mem_flag)
+    ,.mem_rdata(mem_result)
+    ,.valid_o()
+    ,.data_o()
+    ,.ready_i(ready)
+);
 `endif
 `ifdef PROCESS_EDGE
-
+comp P5 (
+    .clk(clk)
+    ,.rst(reset)
+    ,.data_a(in_data.vertex_data)
+    ,.data_b(in_data.edge_data)
+    ,.valid_i(valid)
+    ,.ready_o()
+    ,.valid_o()
+    ,.data_o()
+    ,.ready_i(ready)
+    //complete??
+);
 `endif
 `ifdef CONTROL_ATOMIC_UPDATE
 
