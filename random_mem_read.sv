@@ -33,8 +33,8 @@ module rand_mem_read_module #(
     ,input logic ready_i // input from next module indicating done w/ data
 );
 
-logic [input_width-1:0] data_i_reg;
-logic [output_width-1:0] data_o_reg;
+logic [input_width-1:0] data_i_reg = '{default: '0};
+logic [output_width-1:0] data_o_reg = '{default: '0};
 logic empty_i, empty_o;
 
 assign ready_o = empty_i ? (empty_o ? 1'b1 : ready_i) : 1'b0;

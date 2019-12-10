@@ -37,18 +37,16 @@
 # -------------------------------------------------------------------------- #
 
 
-set_global_assignment -name FAMILY "Cyclone V"
-set_global_assignment -name DEVICE 5CGXFC9E7F35C8
-set_global_assignment -name TOP_LEVEL_ENTITY one_FIFO
+set_global_assignment -name FAMILY "Stratix IV"
+set_global_assignment -name DEVICE AUTO
+set_global_assignment -name TOP_LEVEL_ENTITY seq_mem_module
 set_global_assignment -name ORIGINAL_QUARTUS_VERSION 19.1.0
 set_global_assignment -name PROJECT_CREATION_TIME_DATE "22:13:55  DECEMBER 03, 2019"
-set_global_assignment -name LAST_QUARTUS_VERSION "19.1.0 Lite Edition"
+set_global_assignment -name LAST_QUARTUS_VERSION "18.1.0 Standard Edition"
 set_global_assignment -name PROJECT_OUTPUT_DIRECTORY output_files
-set_global_assignment -name MIN_CORE_JUNCTION_TEMP 0
-set_global_assignment -name MAX_CORE_JUNCTION_TEMP 85
 set_global_assignment -name ERROR_CHECK_FREQUENCY_DIVISOR 256
 set_global_assignment -name EDA_SIMULATION_TOOL "ModelSim-Altera (SystemVerilog)"
-set_global_assignment -name EDA_TIME_SCALE "1 ps" -section_id eda_simulation
+set_global_assignment -name EDA_TIME_SCALE "1 ns" -section_id eda_simulation
 set_global_assignment -name EDA_OUTPUT_DATA_FORMAT "SYSTEMVERILOG HDL" -section_id eda_simulation
 set_global_assignment -name EDA_GENERATE_FUNCTIONAL_NETLIST OFF -section_id eda_board_design_timing
 set_global_assignment -name EDA_GENERATE_FUNCTIONAL_NETLIST OFF -section_id eda_board_design_symbol
@@ -59,14 +57,17 @@ set_global_assignment -name POWER_BOARD_THERMAL_MODEL "NONE (CONSERVATIVE)"
 set_global_assignment -name OPTIMIZATION_MODE "AGGRESSIVE PERFORMANCE"
 set_global_assignment -name EDA_TEST_BENCH_ENABLE_STATUS TEST_BENCH_MODE -section_id eda_simulation
 set_global_assignment -name EDA_NATIVELINK_SIMULATION_TEST_BENCH tb -section_id eda_simulation
-set_global_assignment -name NUM_PARALLEL_PROCESSORS 8
 
-set_global_assignment -name PARTITION_NETLIST_TYPE SOURCE -section_id Top
-set_global_assignment -name PARTITION_FITTER_PRESERVATION_LEVEL PLACEMENT_AND_ROUTING -section_id Top
-set_global_assignment -name PARTITION_COLOR 16764057 -section_id Top
 set_global_assignment -name EDA_TEST_BENCH_NAME tb -section_id eda_simulation
 set_global_assignment -name EDA_DESIGN_INSTANCE_NAME NA -section_id tb
 set_global_assignment -name EDA_TEST_BENCH_MODULE_NAME tb -section_id tb
+set_global_assignment -name PARTITION_NETLIST_TYPE SOURCE -section_id Top
+set_global_assignment -name PARTITION_FITTER_PRESERVATION_LEVEL PLACEMENT_AND_ROUTING -section_id Top
+set_global_assignment -name PARTITION_COLOR 16764057 -section_id Top
+set_global_assignment -name EDA_TEST_BENCH_FILE testbench.sv -section_id tb
+set_global_assignment -name TIMING_ANALYZER_MULTICORNER_ANALYSIS ON
+set_global_assignment -name NUM_PARALLEL_PROCESSORS 1
+set_global_assignment -name SDC_FILE graphicionado_rtl.out.sdc
 set_global_assignment -name SYSTEMVERILOG_FILE mem_write.sv
 set_global_assignment -name SYSTEMVERILOG_FILE readSrcProperty.sv
 set_global_assignment -name SYSTEMVERILOG_FILE types.sv
@@ -77,6 +78,10 @@ set_global_assignment -name SYSTEMVERILOG_FILE seq_mem.sv
 set_global_assignment -name SYSTEMVERILOG_FILE dep_check.sv
 set_global_assignment -name SYSTEMVERILOG_FILE comp.sv
 set_global_assignment -name SYSTEMVERILOG_FILE random_mem_read.sv
-set_global_assignment -name EDA_TEST_BENCH_RUN_SIM_FOR "100000000 ps" -section_id tb
-set_global_assignment -name EDA_TEST_BENCH_FILE testbench.sv -section_id tb
+set_global_assignment -name POWER_USE_INPUT_FILES ON
+set_global_assignment -name POWER_DEFAULT_INPUT_IO_TOGGLE_RATE "12.5 %"
+set_global_assignment -name POWER_REPORT_SIGNAL_ACTIVITY ON
+set_global_assignment -name POWER_REPORT_POWER_DISSIPATION ON
+set_global_assignment -name POWER_INPUT_FILE_NAME simulation/modelsim/p1.vcd -section_id p1.vcd
+set_instance_assignment -name POWER_READ_INPUT_FILE p1.vcd -to seq_mem_module
 set_instance_assignment -name PARTITION_HIERARCHY root_partition -to | -section_id Top

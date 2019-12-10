@@ -36,7 +36,7 @@ module rand_mem_write_module #(
     ,output logic done
 );
 
-logic [input_width-1:0] data_i_reg;
+logic [input_width-1:0] data_i_reg = '{default: '0};
 logic empty_i;
 
 `ifdef A4
@@ -45,7 +45,7 @@ assign update_flag = data_i_reg[input_width];
 `endif
 
 assign ready_o = empty_i & done;
-assign mem_read = ~empty_i & done;
+//assign mem_read = ~empty_i & done;
 
 `ifdef A4
 assign mem_write = ~empty_i & update_flag;
@@ -53,7 +53,7 @@ assign mem_write = ~empty_i & update_flag;
 assign mem_write = ~empty_i;
 `endif
 
-assign mem_addr = data_i_reg[addr_width-1:data_width];
+assign mem_addr = data_i_reg[addr_width+data_width-1:data_width];
 assign mem_wdata = data_i_reg[data_width-1:0];
 
 // input stage

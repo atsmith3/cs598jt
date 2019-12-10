@@ -35,7 +35,7 @@ module comp #(
 );
 
 logic [data_width*2-1:0] data_i;
-logic [data_width*2-1:0] data_i_reg;
+logic [data_width*2-1:0] data_i_reg = '{default: '0};
 logic [data_width-1:0] data_result;
 //comment flag if not needed
 logic flag_result;

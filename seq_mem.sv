@@ -5,10 +5,10 @@
 `include "types.sv"
 
 module seq_mem_module #(
-    parameter addr_width = 64
-    ,parameter cntr_width = 64
+    parameter addr_width = 64//64
+    ,parameter cntr_width = 64//64
     ,parameter input_width = addr_width + cntr_width
-    ,parameter data_width = 64
+    ,parameter data_width = 64//64
     ,parameter output_width = data_width + 1
     ,parameter addr_inc = 4
     )
@@ -24,6 +24,7 @@ module seq_mem_module #(
     // tb side
     ,input logic [addr_width-1:0] base_addr
     ,input logic [cntr_width-1:0] queue_length
+    ,input logic new_iteration
     
     // mem side
     // output to mem
@@ -40,37 +41,48 @@ module seq_mem_module #(
 );
 
 logic [input_width-1:0] data_i;
-logic [input_width-1:0] data_i_reg;
+logic [input_width-1:0] data_i_reg = '{default: '0};
 
 logic [addr_width-1:0] base_addr_int;
 logic [cntr_width-1:0] queue_length_int;
-logic [addr_width-1:0] end_addr;
+logic [addr_width-1:0] mem_addr_int;
+logic mem_read_int;
 
-logic [cntr_width-1:0] cntr;
+logic [cntr_width-1:0] cntr = '{default: '0};
 
 logic last_entry;
 
-logic [data_width-1:0] data_o_reg;
+logic [data_width-1:0] data_o_reg = '{default: '0};
 
 logic empty_i, empty_o;
 
 assign data_i = {base_addr, queue_length};
-assign base_addr_int = data_i_reg[addr_width-1:cntr_width];
+assign base_addr_int = data_i_reg[addr_width+cntr_width-1:cntr_width];
 assign queue_length_int = data_i_reg[cntr_width-1:0];
 
-//assign end_addr = base_addr_int + queue_length_int*addr_inc;
-
 assign ready_o = empty_i ? (empty_o ? 1'b1 : ready_i) : 1'b0;
-assign mem_read = (~empty_i) ? (empty_o ? 1'b1 : ready_i) : 1'b0;
+assign mem_read_int = (~empty_i) ? (empty_o ? 1'b1 : ready_i) : 1'b0;
 
-assign mem_addr = base_addr_int + cntr*addr_inc;
+assign mem_addr_int = base_addr_int << 2*cntr;
 
-assign valid_o = empty_o;
+assign valid_o = ~empty_o;
 assign data_o = {data_o_reg, last_entry}; // be careful about the width
+
+// output buffer for mem_addr and mem_read
+always_ff @(posedge clk) begin
+    if (rst) begin
+        mem_addr <= '0;
+        mem_read <= 1'b0;
+    end
+    else begin
+        mem_addr <= mem_addr_int;
+        mem_read <= mem_read_int;
+    end
+end
 
 // mem addr increment
 always_ff @(posedge clk) begin
-    if (rst || (cntr == queue_length_int)) begin
+    if (rst|new_iteration) begin
         // reset or done w/ current queue
         cntr <= '0;
         last_entry <= 1'b0;

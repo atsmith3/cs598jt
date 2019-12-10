@@ -8,7 +8,7 @@
 //-----------------------------------------------------------------------------
 // TESTBENCH
 //-----------------------------------------------------------------------------
-//`define READ_SRC_PROPERTY
+`define READ_SRC_PROPERTY
 //`define READ_SRC_EDGES
 //`define READ_DST_PROPERTY
 //`define PROCESS_EDGE
@@ -19,9 +19,13 @@
 //`define READ_VERTEX_PROPERTY
 //`define READ_TEMP_VERTEX_PROPERTY
 //`define APPLY
-`define WRITE_VERTEX_PROPERTY
+//`define WRITE_VERTEX_PROPERTY
 
 module tb;
+
+timeunit 1ns;
+timeprecision 1ns;
+
   int unsigned fd;       // Variable for file descriptor handle
   int unsigned curr_tick;
   logic clk, reset, done;
@@ -30,7 +34,7 @@ module tb;
   // DUT SIGNALS
   //---------------------------------------------------------------------------
 `ifdef READ_SRC_PROPERTY
-  string trace_file = "/home/andrew/illinois/cs598jt/final_project/trace/ReadSrcProperty_0_in.csv";
+  string trace_file = "/home/jliu128/cs598/cs598jt/trace/ReadSrcProperty_0_in.csv";
   string format_string = "%d,%d,%d,%d,%d,%d,%d,%d,%d,%d,%f,%f,%d,%d,%d,%d,%d,%d,%d,%d,%d,%d\n";
   sim_event_read_src_property_t sim_event;
   pipeline_data_t in_data;
@@ -43,7 +47,7 @@ module tb;
   logic iteration_reset;
 `endif
 `ifdef READ_SRC_EDGES
-  string trace_file = "/home/andrew/illinois/cs598jt/final_project/trace/ReadSrcEdges_0_in.csv";
+  string trace_file = "trace/ReadSrcEdges_0_in.csv";
   string format_string = "%d,%d,%d,%d,%d,%d,%d,%d,%d,%d,%f,%f,%d,%d,%d,%d,%d,%d,%d,%f,%d,%d,%d\n";
   sim_event_read_src_edges_t sim_event;
   pipeline_data_t in_data;
@@ -57,7 +61,7 @@ module tb;
   logic [63:0] num_edges;
 `endif
 `ifdef READ_DST_PROPERTY
-  string trace_file = "/home/andrew/illinois/cs598jt/final_project/trace/ReadDstProperty_0_0_in.csv";
+  string trace_file = "trace/ReadDstProperty_0_0_in.csv";
   string format_string = "%d,%d,%d,%d,%d,%d,%d,%d,%d,%d,%f,%f,%d,%d,%d,%d,%d,%d,%d\n";
   sim_event_read_dst_property_t sim_event;
   pipeline_data_t in_data;
@@ -67,7 +71,7 @@ module tb;
   logic [63:0] mem_result; 
 `endif
 `ifdef PROCESS_EDGE
-  string trace_file = "/home/andrew/illinois/cs598jt/final_project/trace/ProcessEdge_0_in.csv";
+  string trace_file = "trace/ProcessEdge_0_in.csv";
   string format_string = "%d,%d,%d,%d,%d,%d,%d,%d,%d,%d,%f,%f,%d,%d,%d,%d,%d,%d\n";
   sim_event_process_edge_t sim_event;
   pipeline_data_t in_data;
@@ -76,7 +80,7 @@ module tb;
   logic ready; 
 `endif
 `ifdef CONTROL_ATOMIC_UPDATE
-  string trace_file = "/home/andrew/illinois/cs598jt/final_project/trace/ControlAtomicUpdate_0_in.csv";
+  string trace_file = "trace/ControlAtomicUpdate_0_in.csv";
   string format_string = "%d,%d,%d,%d,%d,%d,%d,%d,%d,%d,%f,%f,%d,%d,%d,%d,%d,%d,%d,%d\n";
   sim_event_control_atomic_update_t sim_event;
   pipeline_data_t in_data;
@@ -87,7 +91,7 @@ module tb;
   logic [63:0] p9_dst_id;
 `endif
 `ifdef READ_TEMP_DST_PROPERTY
-  string trace_file = "/home/andrew/illinois/cs598jt/final_project/trace/ReadTempDstProperty_0_in.csv";
+  string trace_file = "trace/ReadTempDstProperty_0_in.csv";
   string format_string = "%d,%d,%d,%d,%d,%d,%d,%d,%d,%d,%f,%f,%d,%d,%d,%d,%d,%d,%d\n";
   sim_event_read_temp_dst_property_t sim_event;
   pipeline_data_t in_data;
@@ -97,7 +101,7 @@ module tb;
   logic [63:0] mem_result; 
 `endif
 `ifdef REDUCE
-  string trace_file = "/home/andrew/illinois/cs598jt/final_project/trace/Reduce_0_in.csv";
+  string trace_file = "trace/Reduce_0_in.csv";
   string format_string = "%d,%d,%d,%d,%d,%d,%d,%d,%d,%d,%f,%f,%d,%d,%d,%d,%d,%d\n";
   sim_event_reduce_t sim_event;
   pipeline_data_t in_data;
@@ -106,7 +110,7 @@ module tb;
   logic ready; 
 `endif
 `ifdef WRITE_TEMP_DST_PROPERTY
-  string trace_file = "/home/andrew/illinois/cs598jt/final_project/trace/WriteTempDstProperty_0_in.csv";
+  string trace_file = "trace/WriteTempDstProperty_0_in.csv";
   string format_string = "%d,%d,%d,%d,%d,%d,%d,%d,%d,%d,%f,%f,%d,%d,%d,%d,%d\n";
   sim_event_write_temp_dst_property_t sim_event;
   pipeline_data_t in_data;
@@ -114,7 +118,7 @@ module tb;
   logic mem_flag;
 `endif
 `ifdef READ_VERTEX_PROPERTY
-  string trace_file = "/home/andrew/illinois/cs598jt/final_project/trace/ReadVertexProperty_0_in.csv";
+  string trace_file = "trace/ReadVertexProperty_0_in.csv";
   string format_string = "%d,%d,%d,%d,%d,%d,%d,%d,%d,%d,%f,%f,%d,%d,%d,%d,%d,%d,%d,%d,%d,%d\n";
   sim_event_read_vertex_property_t sim_event;
   pipeline_data_t in_data;
@@ -127,7 +131,7 @@ module tb;
   logic iteration_reset;
 `endif
 `ifdef READ_TEMP_VERTEX_PROPERTY
-  string trace_file = "/home/andrew/illinois/cs598jt/final_project/trace/ReadTempVertexProperty_0_in.csv";
+  string trace_file = "trace/ReadTempVertexProperty_0_in.csv";
   string format_string = "%d,%d,%d,%d,%d,%d,%d,%d,%d,%d,%f,%f,%d,%d,%d,%d,%d,%d,%d\n";
   sim_event_read_temp_vertex_property_t sim_event;
   pipeline_data_t in_data;
@@ -137,7 +141,7 @@ module tb;
   logic [63:0] mem_result; 
 `endif
 `ifdef APPLY
-  string trace_file = "/home/andrew/illinois/cs598jt/final_project/trace/Apply_0_in.csv";
+  string trace_file = "trace/Apply_0_in.csv";
   string format_string = "%d,%d,%d,%d,%d,%d,%d,%d,%d,%d,%f,%f,%d,%d,%d,%d,%d,%d\n";
   sim_event_apply_t sim_event;
   pipeline_data_t in_data;
@@ -146,7 +150,7 @@ module tb;
   logic ready; 
 `endif
 `ifdef WRITE_VERTEX_PROPERTY
-  string trace_file = "/home/andrew/illinois/cs598jt/final_project/trace/WriteVertexProperty_0_in.csv";
+  string trace_file = "trace/WriteVertexProperty_0_in.csv";
   string format_string = "%d,%d,%d,%d,%d,%d,%d,%d,%d,%d,%f,%f,%d,%d,%d,%d,%d,%d\n";
   sim_event_write_vertex_property_t sim_event;
   pipeline_data_t in_data;
@@ -172,6 +176,22 @@ module tb;
 //    .p_stall_can_accept(),
 //    .o_data()
 //  );
+seq_mem_module P1 (
+    .clk(clk)
+    ,.rst(reset)
+    ,.valid_i(iteration_reset)//valid
+    ,.ready_o()
+    ,.base_addr(address)
+    ,.queue_length(queue_length)//queue_length
+    ,.new_iteration(iteration_reset)
+    ,.mem_read()
+    ,.mem_addr()
+    ,.mem_resp(mem_flag)
+    ,.mem_rdata(mem_result)
+    ,.valid_o()
+    ,.data_o()
+    ,.ready_i(ready)
+);
 `endif
 `ifdef READ_SRC_EDGES
 
@@ -208,11 +228,11 @@ module tb;
 `endif
 
   initial begin
-    sim_event.tick = 0;
-    curr_tick = 0;
-    clk = 0;
-    reset = 0;
-    done = 0;
+    sim_event.tick <= 0;
+    curr_tick <= 0;
+    clk <= 0;
+    reset <= 1;
+    done <= 0;
 
     fd = $fopen (trace_file, "r");
 
@@ -405,13 +425,14 @@ module tb;
 `endif
     end
     else begin
-      done = 1;
+      done <= 1;
       $fclose(fd);
     end
+    #5 reset <= 0;
   end
 
   always begin
-    #1 clk = !clk;
+    #5 clk = ~clk;
     if(curr_tick == sim_event.tick) begin
       // Assign signals from test vector file
       in_data.vertex_id = sim_event.pipeline_data.vertex_id;
@@ -625,6 +646,7 @@ module tb;
                    sim_event.mem_result,
                    sim_event.address,
                    sim_event.queue_length,
+                   //sim_event.4);
                    sim_event.iteration_reset);
 `endif
 `ifdef READ_SRC_EDGES

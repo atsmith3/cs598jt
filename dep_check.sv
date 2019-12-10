@@ -30,7 +30,7 @@ module dep_check #(
     ,output logic dep
 );
 
-logic [width-1:0] data_i_reg;
+logic [width-1:0] data_i_reg = '{default: '0};
 logic empty_i;
 
 always_comb begin
