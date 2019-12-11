@@ -17,8 +17,8 @@
 //`define REDUCE
 //`define WRITE_TEMP_DST_PROPERTY
 //`define READ_VERTEX_PROPERTY
-//`define READ_TEMP_VERTEX_PROPERTY
-`define APPLY
+`define READ_TEMP_VERTEX_PROPERTY
+//`define APPLY
 //`define WRITE_VERTEX_PROPERTY
 
 //`define DEBUG
@@ -49,7 +49,7 @@ timeprecision 1ns;
   logic iteration_reset;
 `endif
 `ifdef READ_SRC_EDGES
-  string trace_file = "trace/ReadSrcEdges_0_in.csv";
+  string trace_file = "/home/jliu128/cs598/cs598jt/trace/ReadSrcEdges_0_in.csv";
   string format_string = "%d,%d,%d,%d,%d,%d,%d,%d,%d,%d,%f,%f,%d,%d,%d,%d,%d,%d,%d,%f,%d,%d,%d\n";
   sim_event_read_src_edges_t sim_event;
   pipeline_data_t in_data;
@@ -93,7 +93,7 @@ timeprecision 1ns;
   logic [63:0] p9_dst_id;
 `endif
 `ifdef READ_TEMP_DST_PROPERTY
-  string trace_file = "trace/ReadTempDstProperty_0_in.csv";
+  string trace_file = "/home/jliu128/cs598/cs598jt/trace/ReadTempDstProperty_0_in.csv";
   string format_string = "%d,%d,%d,%d,%d,%d,%d,%d,%d,%d,%f,%f,%d,%d,%d,%d,%d,%d,%d\n";
   sim_event_read_temp_dst_property_t sim_event;
   pipeline_data_t in_data;
@@ -103,7 +103,7 @@ timeprecision 1ns;
   logic [63:0] mem_result; 
 `endif
 `ifdef REDUCE
-  string trace_file = "trace/Reduce_0_in.csv";
+  string trace_file = "/home/jliu128/cs598/cs598jt/trace/Reduce_0_in.csv";
   string format_string = "%d,%d,%d,%d,%d,%d,%d,%d,%d,%d,%f,%f,%d,%d,%d,%d,%d,%d\n";
   sim_event_reduce_t sim_event;
   pipeline_data_t in_data;
@@ -112,7 +112,7 @@ timeprecision 1ns;
   logic ready; 
 `endif
 `ifdef WRITE_TEMP_DST_PROPERTY
-  string trace_file = "trace/WriteTempDstProperty_0_in.csv";
+  string trace_file = "/home/jliu128/cs598/cs598jt/trace/WriteTempDstProperty_0_in.csv";
   string format_string = "%d,%d,%d,%d,%d,%d,%d,%d,%d,%d,%f,%f,%d,%d,%d,%d,%d\n";
   sim_event_write_temp_dst_property_t sim_event;
   pipeline_data_t in_data;
@@ -120,7 +120,7 @@ timeprecision 1ns;
   logic mem_flag;
 `endif
 `ifdef READ_VERTEX_PROPERTY
-  string trace_file = "trace/ReadVertexProperty_0_in.csv";
+  string trace_file = "/home/jliu128/cs598/cs598jt/trace/ReadVertexProperty_0_in.csv";
   string format_string = "%d,%d,%d,%d,%d,%d,%d,%d,%d,%d,%f,%f,%d,%d,%d,%d,%d,%d,%d,%d,%d,%d\n";
   sim_event_read_vertex_property_t sim_event;
   pipeline_data_t in_data;
@@ -133,7 +133,7 @@ timeprecision 1ns;
   logic iteration_reset;
 `endif
 `ifdef READ_TEMP_VERTEX_PROPERTY
-  string trace_file = "trace/ReadTempVertexProperty_0_in.csv";
+  string trace_file = "/home/jliu128/cs598/cs598jt/trace/ReadTempVertexProperty_0_in.csv";
   string format_string = "%d,%d,%d,%d,%d,%d,%d,%d,%d,%d,%f,%f,%d,%d,%d,%d,%d,%d,%d\n";
   sim_event_read_temp_vertex_property_t sim_event;
   pipeline_data_t in_data;
@@ -196,7 +196,25 @@ seq_mem_module P1 (
 );
 `endif
 `ifdef READ_SRC_EDGES
-
+seq_mem_module #(
+    .data_width(64*2)
+    ,.addr_inc(8)
+    ) P3 (
+    .clk(clk)
+    ,.rst(reset)
+    ,.valid_i(valid)//valid
+    ,.ready_o()
+    ,.base_addr(address)
+    ,.queue_length(num_edges)//queue_length
+    ,.new_iteration(edges_empty)
+    ,.mem_read()
+    ,.mem_addr()
+    ,.mem_resp(mem_flag)
+    ,.mem_rdata({edge_data, dst_id})
+    ,.valid_o()
+    ,.data_o()
+    ,.ready_i(ready)
+);
 `endif
 `ifdef READ_DST_PROPERTY
 rand_mem_read_module P4 (
@@ -245,19 +263,82 @@ dep_check P6 (
 );
 `endif
 `ifdef READ_TEMP_DST_PROPERTY
-
+rand_mem_read_module P7 (
+    .clk(clk)
+    ,.rst(reset)
+    ,.data_i(in_data.vertex_dst_id_addr)
+    ,.valid_i(valid)
+    ,.ready_o()
+    ,.mem_read()
+    ,.mem_addr()
+    ,.mem_resp(mem_flag)
+    ,.mem_rdata(mem_result)
+    ,.valid_o()
+    ,.data_o()
+    ,.ready_i(ready)
+);
 `endif
 `ifdef REDUCE
-
+comp P8 (
+    .clk(clk)
+    ,.rst(reset)
+    ,.data_a(in_data.vertex_temp_dst_data)
+    ,.data_b(in_data.message_data)
+    ,.valid_i(valid)
+    ,.ready_o()
+    ,.valid_o()
+    ,.data_o()
+    ,.ready_i(ready)
+    //complete??
+);
 `endif
 `ifdef WRITE_TEMP_DST_PROPERTY
-
+rand_mem_write_module P9 (
+    .clk(clk)
+    ,.rst(reset)
+    ,.data_i({in_data.vertex_dst_id_addr, in_data.vertex_temp_dst_data})
+    ,.valid_i(valid)
+    ,.ready_o()
+    ,.mem_write()
+    ,.mem_addr()
+    ,.mem_wdata()
+    ,.mem_resp(mem_flag)
+    ,.done()
+    );
 `endif
 `ifdef READ_VERTEX_PROPERTY
-
+seq_mem_module A1 (
+    .clk(clk)
+    ,.rst(reset)
+    ,.valid_i(iteration_reset)//valid
+    ,.ready_o()
+    ,.base_addr(address)
+    ,.queue_length(queue_length)//queue_length
+    ,.new_iteration(iteration_reset)
+    ,.mem_read()
+    ,.mem_addr()
+    ,.mem_resp(mem_flag)
+    ,.mem_rdata(mem_result)
+    ,.valid_o()
+    ,.data_o()
+    ,.ready_i(ready)
+);
 `endif
 `ifdef READ_TEMP_VERTEX_PROPERTY
-
+rand_mem_read_module A2 (
+    .clk(clk)
+    ,.rst(reset)
+    ,.data_i(in_data.vertex_dst_id_addr)
+    ,.valid_i(valid)
+    ,.ready_o()
+    ,.mem_read()
+    ,.mem_addr()
+    ,.mem_resp(mem_flag)
+    ,.mem_rdata(mem_result)
+    ,.valid_o()
+    ,.data_o()
+    ,.ready_i(ready)
+);
 `endif
 `ifdef APPLY
 comp A3 (
