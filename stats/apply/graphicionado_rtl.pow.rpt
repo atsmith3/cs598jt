@@ -1,0 +1,840 @@
+Power Analyzer report for graphicionado_rtl
+Tue Dec 10 21:05:43 2019
+Quartus Prime Version 18.1.0 Build 625 09/12/2018 SJ Standard Edition
+
+
+---------------------
+; Table of Contents ;
+---------------------
+  1. Legal Notice
+  2. Power Analyzer Summary
+  3. Power Analyzer Settings
+  4. Power Analyzer Simulation Files Read
+  5. Operating Conditions Used
+  6. Thermal Power Dissipation by Block
+  7. Thermal Power Dissipation by Block Type
+  8. Thermal Power Dissipation by Hierarchy
+  9. Core Dynamic Thermal Power Dissipation by Clock Domain
+ 10. Current Drawn from Voltage Supplies Summary
+ 11. VCCIO Supply Current Drawn by I/O Bank
+ 12. VCCIO Supply Current Drawn by Voltage
+ 13. VCCPD Supply Current Drawn by I/O Bank
+ 14. VCCPD Supply Current Drawn by Voltage
+ 15. Confidence Metric Details
+ 16. Signal Activities
+ 17. Power Analyzer Messages
+
+
+
+----------------
+; Legal Notice ;
+----------------
+Copyright (C) 2018  Intel Corporation. All rights reserved.
+Your use of Intel Corporation's design tools, logic functions 
+and other software and tools, and its AMPP partner logic 
+functions, and any output files from any of the foregoing 
+(including device programming or simulation files), and any 
+associated documentation or information are expressly subject 
+to the terms and conditions of the Intel Program License 
+Subscription Agreement, the Intel Quartus Prime License Agreement,
+the Intel FPGA IP License Agreement, or other applicable license
+agreement, including, without limitation, that your use is for
+the sole purpose of programming logic devices manufactured by
+Intel and sold by Intel or its authorized distributors.  Please
+refer to the applicable agreement for further details.
+
+
+
++-------------------------------------------------------------------------------------------+
+; Power Analyzer Summary                                                                    ;
++----------------------------------------+--------------------------------------------------+
+; Power Analyzer Status                  ; Successful - Tue Dec 10 21:05:43 2019            ;
+; Quartus Prime Version                  ; 18.1.0 Build 625 09/12/2018 SJ Standard Edition  ;
+; Revision Name                          ; graphicionado_rtl                                ;
+; Top-level Entity Name                  ; comp                                             ;
+; Family                                 ; Stratix IV                                       ;
+; Device                                 ; EP4SGX70HF35C2                                   ;
+; Power Models                           ; Final                                            ;
+; Total Thermal Power Dissipation        ; 468.79 mW                                        ;
+; Core Dynamic Thermal Power Dissipation ; 0.07 mW                                          ;
+; Core Static Thermal Power Dissipation  ; 424.60 mW                                        ;
+; I/O Thermal Power Dissipation          ; 44.13 mW                                         ;
+; Power Estimation Confidence            ; Low: user provided insufficient toggle rate data ;
++----------------------------------------+--------------------------------------------------+
+
+
++--------------------------------------------------------------------------------------------------------------------------+
+; Power Analyzer Settings                                                                                                  ;
++------------------------------------------------------------------+---------------------------------------+---------------+
+; Option                                                           ; Setting                               ; Default Value ;
++------------------------------------------------------------------+---------------------------------------+---------------+
+; Maximum processors allowed for parallel compilation              ; 1                                     ;               ;
+; Use smart compilation                                            ; Off                                   ; Off           ;
+; Enable parallel Assembler and Timing Analyzer during compilation ; On                                    ; On            ;
+; Enable compact report table                                      ; Off                                   ; Off           ;
+; Default Power Input I/O Toggle Rate                              ; 12.5%                                 ; 12.5%         ;
+; Use Input Files                                                  ; On                                    ; Off           ;
+; Power Analyzer Report Signal Activity                            ; On                                    ; Off           ;
+; Power Analyzer Report Power Dissipation                          ; On                                    ; Off           ;
+; Preset Cooling Solution                                          ; 23 MM HEAT SINK WITH 200 LFPM AIRFLOW ;               ;
+; Board thermal model                                              ; None (CONSERVATIVE)                   ;               ;
+; Default Power Toggle Rate                                        ; 12.5%                                 ; 12.5%         ;
+; Use vectorless estimation                                        ; On                                    ; On            ;
+; Filter Glitches in VCD File Reader                               ; On                                    ; On            ;
+; Device Power Characteristics                                     ; TYPICAL                               ; TYPICAL       ;
+; Automatically Compute Junction Temperature                       ; On                                    ; On            ;
+; Specified Junction Temperature                                   ; 25                                    ; 25            ;
+; Ambient Temperature                                              ; 25                                    ; 25            ;
+; Use Custom Cooling Solution                                      ; Off                                   ; Off           ;
+; Board Temperature                                                ; 25                                    ; 25            ;
++------------------------------------------------------------------+---------------------------------------+---------------+
+
+
++------------------------------------------------------------------------------------------------------------------+
+; Power Analyzer Simulation Files Read                                                                             ;
++---------+----------------------------+-----------+--------+----------------+--------------+-----------+----------+
+; File ID ; File Name                  ; File Type ; Entity ; VCD Start Time ; VCD End Time ; Unknown % ; Toggle % ;
++---------+----------------------------+-----------+--------+----------------+--------------+-----------+----------+
+; f1      ; simulation/modelsim/a3.vcd ; VCD       ; |comp  ; N/A            ; N/A          ; 0.0%      ; 5.0%     ;
++---------+----------------------------+-----------+--------+----------------+--------------+-----------+----------+
+
+
++-------------------------------------------------------------------------+
+; Operating Conditions Used                                               ;
++---------------------------------------------+---------------------------+
+; Setting                                     ; Value                     ;
++---------------------------------------------+---------------------------+
+; Device power characteristics                ; Typical                   ;
+;                                             ;                           ;
+; Voltages                                    ;                           ;
+;     VCC                                     ; 0.90 V                    ;
+;     VCCPT                                   ; 1.50 V                    ;
+;     VCCA_PLL                                ; 2.50 V                    ;
+;     VCCD_PLL                                ; 0.90 V                    ;
+;     VCCPGM                                  ; 1.80 V                    ;
+;     VCC_CLKIN                               ; 2.50 V                    ;
+;     VCCBAT                                  ; 3.00 V                    ;
+;     VCCHIP_L                                ; 0.00 V                    ;
+;     VCCT_L                                  ; 0.00 V                    ;
+;     VCCL_GXBL                               ; 0.00 V                    ;
+;     VCCR_L                                  ; 0.00 V                    ;
+;     VCCA_L (3.0V)                           ; 0.00 V                    ;
+;     VCCA_L (2.5V)                           ; 0.00 V                    ;
+;     VCCH_GXBL (1.4V)                        ; 0.00 V                    ;
+;     VCCH_GXBL (1.5V)                        ; 0.00 V                    ;
+;     VCCHIP_R                                ; 0.00 V                    ;
+;     VCCT_R                                  ; 0.00 V                    ;
+;     VCCL_GXBR                               ; 0.00 V                    ;
+;     VCCR_R                                  ; 0.00 V                    ;
+;     VCCA_R (3.0V)                           ; 0.00 V                    ;
+;     VCCA_R (2.5V)                           ; 0.00 V                    ;
+;     VCCH_GXBR (1.4V)                        ; 0.00 V                    ;
+;     VCCH_GXBR (1.5V)                        ; 0.00 V                    ;
+;     VCCAUX                                  ; 2.50 V                    ;
+;     2.5 V I/O Standard                      ; 2.5 V                     ;
+;     1.8 V I/O Standard                      ; 1.8 V                     ;
+;                                             ;                           ;
+; Auto computed junction temperature          ; 26.0 degrees Celsius      ;
+;     Ambient temperature                     ; 25.0 degrees Celsius      ;
+;     Junction-to-Case thermal resistance     ; 0.30 degrees Celsius/Watt ;
+;     Case-to-Heat Sink thermal resistance    ; 0.10 degrees Celsius/Watt ;
+;     Heat Sink-to-Ambient thermal resistance ; 1.80 degrees Celsius/Watt ;
+;                                             ;                           ;
+; Board model used                            ; None                      ;
++---------------------------------------------+---------------------------+
+
+
++--------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Thermal Power Dissipation by Block                                                                                                                           ;
++--------------------+--------------------+---------------------+-----------------------------+--------------------------------+-------------------------------+
+; Block Name         ; Block Type         ; Total Thermal Power ; Block Thermal Dynamic Power ; Block Thermal Static Power (1) ; Routing Thermal Dynamic Power ;
++--------------------+--------------------+---------------------+-----------------------------+--------------------------------+-------------------------------+
+; empty_i            ; Register cell      ; 0.02 mW             ; 0.01 mW                     ; --                             ; 0.01 mW                       ;
+; Equal0~0           ; Combinational cell ; 0.00 mW             ; 0.00 mW                     ; --                             ; 0.00 mW                       ;
+; Equal0~1           ; Combinational cell ; 0.00 mW             ; 0.00 mW                     ; --                             ; 0.00 mW                       ;
+; Equal0~2           ; Combinational cell ; 0.00 mW             ; 0.00 mW                     ; --                             ; 0.00 mW                       ;
+; Equal0~3           ; Combinational cell ; 0.00 mW             ; 0.00 mW                     ; --                             ; 0.00 mW                       ;
+; Equal0~4           ; Combinational cell ; 0.00 mW             ; 0.00 mW                     ; --                             ; 0.00 mW                       ;
+; Equal0~5           ; Combinational cell ; 0.00 mW             ; 0.00 mW                     ; --                             ; 0.00 mW                       ;
+; Equal0~6           ; Combinational cell ; 0.00 mW             ; 0.00 mW                     ; --                             ; 0.00 mW                       ;
+; Equal0~7           ; Combinational cell ; 0.00 mW             ; 0.00 mW                     ; --                             ; 0.00 mW                       ;
+; Equal0~8           ; Combinational cell ; 0.00 mW             ; 0.00 mW                     ; --                             ; 0.00 mW                       ;
+; Equal0~9           ; Combinational cell ; 0.00 mW             ; 0.00 mW                     ; --                             ; 0.00 mW                       ;
+; Equal0~10          ; Combinational cell ; 0.00 mW             ; 0.00 mW                     ; --                             ; 0.00 mW                       ;
+; Equal0~11          ; Combinational cell ; 0.00 mW             ; 0.00 mW                     ; --                             ; 0.00 mW                       ;
+; Equal0~12          ; Combinational cell ; 0.00 mW             ; 0.00 mW                     ; --                             ; 0.00 mW                       ;
+; Equal0~13          ; Combinational cell ; 0.00 mW             ; 0.00 mW                     ; --                             ; 0.00 mW                       ;
+; Equal0~14          ; Combinational cell ; 0.00 mW             ; 0.00 mW                     ; --                             ; 0.00 mW                       ;
+; Equal0~15          ; Combinational cell ; 0.00 mW             ; 0.00 mW                     ; --                             ; 0.00 mW                       ;
+; Equal0~16          ; Combinational cell ; 0.00 mW             ; 0.00 mW                     ; --                             ; 0.00 mW                       ;
+; Equal0~17          ; Combinational cell ; 0.00 mW             ; 0.00 mW                     ; --                             ; 0.00 mW                       ;
+; Equal0~18          ; Combinational cell ; 0.00 mW             ; 0.00 mW                     ; --                             ; 0.00 mW                       ;
+; Equal0~19          ; Combinational cell ; 0.00 mW             ; 0.00 mW                     ; --                             ; 0.00 mW                       ;
+; Equal0~20          ; Combinational cell ; 0.00 mW             ; 0.00 mW                     ; --                             ; 0.00 mW                       ;
+; Equal0~21          ; Combinational cell ; 0.00 mW             ; 0.00 mW                     ; --                             ; 0.00 mW                       ;
+; Equal0~22          ; Combinational cell ; 0.00 mW             ; 0.00 mW                     ; --                             ; 0.00 mW                       ;
+; Equal0~23          ; Combinational cell ; 0.00 mW             ; 0.00 mW                     ; --                             ; 0.00 mW                       ;
+; Equal0~24          ; Combinational cell ; 0.00 mW             ; 0.00 mW                     ; --                             ; 0.00 mW                       ;
+; Equal0~25          ; Combinational cell ; 0.00 mW             ; 0.00 mW                     ; --                             ; 0.00 mW                       ;
+; empty_i~0          ; Combinational cell ; 0.01 mW             ; 0.01 mW                     ; --                             ; 0.00 mW                       ;
+; ready_o            ; I/O                ; 1.24 mW             ; 1.23 mW                     ; 0.02 mW                        ; 0.00 mW                       ;
+; valid_o            ; I/O                ; 1.25 mW             ; 1.23 mW                     ; 0.02 mW                        ; 0.00 mW                       ;
+; data_o[0]          ; I/O                ; 0.02 mW             ; 0.00 mW                     ; 0.02 mW                        ; 0.00 mW                       ;
+; data_o[1]          ; I/O                ; 0.02 mW             ; 0.00 mW                     ; 0.02 mW                        ; 0.00 mW                       ;
+; data_o[2]          ; I/O                ; 0.02 mW             ; 0.00 mW                     ; 0.02 mW                        ; 0.00 mW                       ;
+; data_o[3]          ; I/O                ; 0.02 mW             ; 0.00 mW                     ; 0.02 mW                        ; 0.00 mW                       ;
+; data_o[4]          ; I/O                ; 0.02 mW             ; 0.00 mW                     ; 0.02 mW                        ; 0.00 mW                       ;
+; data_o[5]          ; I/O                ; 0.02 mW             ; 0.00 mW                     ; 0.02 mW                        ; 0.00 mW                       ;
+; data_o[6]          ; I/O                ; 0.02 mW             ; 0.00 mW                     ; 0.02 mW                        ; 0.00 mW                       ;
+; data_o[7]          ; I/O                ; 0.02 mW             ; 0.00 mW                     ; 0.02 mW                        ; 0.00 mW                       ;
+; data_o[8]          ; I/O                ; 0.02 mW             ; 0.00 mW                     ; 0.02 mW                        ; 0.00 mW                       ;
+; data_o[9]          ; I/O                ; 0.02 mW             ; 0.00 mW                     ; 0.02 mW                        ; 0.00 mW                       ;
+; data_o[10]         ; I/O                ; 0.02 mW             ; 0.00 mW                     ; 0.02 mW                        ; 0.00 mW                       ;
+; data_o[11]         ; I/O                ; 0.02 mW             ; 0.00 mW                     ; 0.02 mW                        ; 0.00 mW                       ;
+; data_o[12]         ; I/O                ; 0.02 mW             ; 0.00 mW                     ; 0.02 mW                        ; 0.00 mW                       ;
+; data_o[13]         ; I/O                ; 0.02 mW             ; 0.00 mW                     ; 0.02 mW                        ; 0.00 mW                       ;
+; data_o[14]         ; I/O                ; 0.02 mW             ; 0.00 mW                     ; 0.02 mW                        ; 0.00 mW                       ;
+; data_o[15]         ; I/O                ; 0.02 mW             ; 0.00 mW                     ; 0.02 mW                        ; 0.00 mW                       ;
+; data_o[16]         ; I/O                ; 0.02 mW             ; 0.00 mW                     ; 0.02 mW                        ; 0.00 mW                       ;
+; data_o[17]         ; I/O                ; 0.02 mW             ; 0.00 mW                     ; 0.02 mW                        ; 0.00 mW                       ;
+; data_o[18]         ; I/O                ; 0.02 mW             ; 0.00 mW                     ; 0.02 mW                        ; 0.00 mW                       ;
+; data_o[19]         ; I/O                ; 0.02 mW             ; 0.00 mW                     ; 0.02 mW                        ; 0.00 mW                       ;
+; data_o[20]         ; I/O                ; 0.02 mW             ; 0.00 mW                     ; 0.02 mW                        ; 0.00 mW                       ;
+; data_o[21]         ; I/O                ; 0.02 mW             ; 0.00 mW                     ; 0.02 mW                        ; 0.00 mW                       ;
+; data_o[22]         ; I/O                ; 0.02 mW             ; 0.00 mW                     ; 0.02 mW                        ; 0.00 mW                       ;
+; data_o[23]         ; I/O                ; 0.02 mW             ; 0.00 mW                     ; 0.02 mW                        ; 0.00 mW                       ;
+; data_o[24]         ; I/O                ; 0.02 mW             ; 0.00 mW                     ; 0.02 mW                        ; 0.00 mW                       ;
+; data_o[25]         ; I/O                ; 0.02 mW             ; 0.00 mW                     ; 0.02 mW                        ; 0.00 mW                       ;
+; data_o[26]         ; I/O                ; 0.02 mW             ; 0.00 mW                     ; 0.02 mW                        ; 0.00 mW                       ;
+; data_o[27]         ; I/O                ; 0.02 mW             ; 0.00 mW                     ; 0.02 mW                        ; 0.00 mW                       ;
+; data_o[28]         ; I/O                ; 0.02 mW             ; 0.00 mW                     ; 0.02 mW                        ; 0.00 mW                       ;
+; data_o[29]         ; I/O                ; 0.02 mW             ; 0.00 mW                     ; 0.02 mW                        ; 0.00 mW                       ;
+; data_o[30]         ; I/O                ; 0.02 mW             ; 0.00 mW                     ; 0.02 mW                        ; 0.00 mW                       ;
+; data_o[31]         ; I/O                ; 0.02 mW             ; 0.00 mW                     ; 0.02 mW                        ; 0.00 mW                       ;
+; data_o[32]         ; I/O                ; 0.02 mW             ; 0.00 mW                     ; 0.02 mW                        ; 0.00 mW                       ;
+; data_o[33]         ; I/O                ; 0.02 mW             ; 0.00 mW                     ; 0.02 mW                        ; 0.00 mW                       ;
+; data_o[34]         ; I/O                ; 0.02 mW             ; 0.00 mW                     ; 0.02 mW                        ; 0.00 mW                       ;
+; data_o[35]         ; I/O                ; 0.02 mW             ; 0.00 mW                     ; 0.02 mW                        ; 0.00 mW                       ;
+; data_o[36]         ; I/O                ; 0.02 mW             ; 0.00 mW                     ; 0.02 mW                        ; 0.00 mW                       ;
+; data_o[37]         ; I/O                ; 0.02 mW             ; 0.00 mW                     ; 0.02 mW                        ; 0.00 mW                       ;
+; data_o[38]         ; I/O                ; 0.02 mW             ; 0.00 mW                     ; 0.02 mW                        ; 0.00 mW                       ;
+; data_o[39]         ; I/O                ; 0.02 mW             ; 0.00 mW                     ; 0.02 mW                        ; 0.00 mW                       ;
+; data_o[40]         ; I/O                ; 0.02 mW             ; 0.00 mW                     ; 0.02 mW                        ; 0.00 mW                       ;
+; data_o[41]         ; I/O                ; 0.02 mW             ; 0.00 mW                     ; 0.02 mW                        ; 0.00 mW                       ;
+; data_o[42]         ; I/O                ; 0.02 mW             ; 0.00 mW                     ; 0.02 mW                        ; 0.00 mW                       ;
+; data_o[43]         ; I/O                ; 0.02 mW             ; 0.00 mW                     ; 0.02 mW                        ; 0.00 mW                       ;
+; data_o[44]         ; I/O                ; 0.02 mW             ; 0.00 mW                     ; 0.02 mW                        ; 0.00 mW                       ;
+; data_o[45]         ; I/O                ; 0.02 mW             ; 0.00 mW                     ; 0.02 mW                        ; 0.00 mW                       ;
+; data_o[46]         ; I/O                ; 0.02 mW             ; 0.00 mW                     ; 0.02 mW                        ; 0.00 mW                       ;
+; data_o[47]         ; I/O                ; 0.02 mW             ; 0.00 mW                     ; 0.02 mW                        ; 0.00 mW                       ;
+; data_o[48]         ; I/O                ; 0.02 mW             ; 0.00 mW                     ; 0.02 mW                        ; 0.00 mW                       ;
+; data_o[49]         ; I/O                ; 0.02 mW             ; 0.00 mW                     ; 0.02 mW                        ; 0.00 mW                       ;
+; data_o[50]         ; I/O                ; 0.02 mW             ; 0.00 mW                     ; 0.02 mW                        ; 0.00 mW                       ;
+; data_o[51]         ; I/O                ; 0.02 mW             ; 0.00 mW                     ; 0.02 mW                        ; 0.00 mW                       ;
+; data_o[52]         ; I/O                ; 0.02 mW             ; 0.00 mW                     ; 0.02 mW                        ; 0.00 mW                       ;
+; data_o[53]         ; I/O                ; 0.02 mW             ; 0.00 mW                     ; 0.02 mW                        ; 0.00 mW                       ;
+; data_o[54]         ; I/O                ; 0.02 mW             ; 0.00 mW                     ; 0.02 mW                        ; 0.00 mW                       ;
+; data_o[55]         ; I/O                ; 0.02 mW             ; 0.00 mW                     ; 0.02 mW                        ; 0.00 mW                       ;
+; data_o[56]         ; I/O                ; 0.02 mW             ; 0.00 mW                     ; 0.02 mW                        ; 0.00 mW                       ;
+; data_o[57]         ; I/O                ; 0.02 mW             ; 0.00 mW                     ; 0.02 mW                        ; 0.00 mW                       ;
+; data_o[58]         ; I/O                ; 0.02 mW             ; 0.00 mW                     ; 0.02 mW                        ; 0.00 mW                       ;
+; data_o[59]         ; I/O                ; 0.02 mW             ; 0.00 mW                     ; 0.02 mW                        ; 0.00 mW                       ;
+; data_o[60]         ; I/O                ; 0.02 mW             ; 0.00 mW                     ; 0.02 mW                        ; 0.00 mW                       ;
+; data_o[61]         ; I/O                ; 0.02 mW             ; 0.00 mW                     ; 0.02 mW                        ; 0.00 mW                       ;
+; data_o[62]         ; I/O                ; 0.02 mW             ; 0.00 mW                     ; 0.02 mW                        ; 0.00 mW                       ;
+; data_o[63]         ; I/O                ; 0.02 mW             ; 0.00 mW                     ; 0.02 mW                        ; 0.00 mW                       ;
+; update_flag        ; I/O                ; 0.02 mW             ; 0.00 mW                     ; 0.02 mW                        ; 0.00 mW                       ;
+; data_a[15]         ; I/O                ; 0.02 mW             ; 0.00 mW                     ; 0.02 mW                        ; 0.00 mW                       ;
+; data_b[15]         ; I/O                ; 0.02 mW             ; 0.00 mW                     ; 0.02 mW                        ; 0.00 mW                       ;
+; data_a[16]         ; I/O                ; 0.02 mW             ; 0.00 mW                     ; 0.02 mW                        ; 0.00 mW                       ;
+; data_b[16]         ; I/O                ; 0.02 mW             ; 0.00 mW                     ; 0.02 mW                        ; 0.00 mW                       ;
+; data_a[17]         ; I/O                ; 0.02 mW             ; 0.00 mW                     ; 0.02 mW                        ; 0.00 mW                       ;
+; data_b[17]         ; I/O                ; 0.02 mW             ; 0.00 mW                     ; 0.02 mW                        ; 0.00 mW                       ;
+; data_a[33]         ; I/O                ; 0.02 mW             ; 0.00 mW                     ; 0.02 mW                        ; 0.00 mW                       ;
+; data_b[33]         ; I/O                ; 0.02 mW             ; 0.00 mW                     ; 0.02 mW                        ; 0.00 mW                       ;
+; data_a[34]         ; I/O                ; 0.02 mW             ; 0.00 mW                     ; 0.02 mW                        ; 0.00 mW                       ;
+; data_b[34]         ; I/O                ; 0.02 mW             ; 0.00 mW                     ; 0.02 mW                        ; 0.00 mW                       ;
+; data_a[35]         ; I/O                ; 0.02 mW             ; 0.00 mW                     ; 0.02 mW                        ; 0.00 mW                       ;
+; data_b[35]         ; I/O                ; 0.02 mW             ; 0.00 mW                     ; 0.02 mW                        ; 0.00 mW                       ;
+; data_a[0]          ; I/O                ; 0.02 mW             ; 0.00 mW                     ; 0.02 mW                        ; 0.00 mW                       ;
+; data_b[0]          ; I/O                ; 0.02 mW             ; 0.00 mW                     ; 0.02 mW                        ; 0.00 mW                       ;
+; data_a[1]          ; I/O                ; 0.02 mW             ; 0.00 mW                     ; 0.02 mW                        ; 0.00 mW                       ;
+; data_b[1]          ; I/O                ; 0.02 mW             ; 0.00 mW                     ; 0.02 mW                        ; 0.00 mW                       ;
+; data_a[2]          ; I/O                ; 0.02 mW             ; 0.00 mW                     ; 0.02 mW                        ; 0.00 mW                       ;
+; data_b[2]          ; I/O                ; 0.02 mW             ; 0.00 mW                     ; 0.02 mW                        ; 0.00 mW                       ;
+; data_a[3]          ; I/O                ; 0.02 mW             ; 0.00 mW                     ; 0.02 mW                        ; 0.00 mW                       ;
+; data_b[3]          ; I/O                ; 0.02 mW             ; 0.00 mW                     ; 0.02 mW                        ; 0.00 mW                       ;
+; data_a[4]          ; I/O                ; 0.02 mW             ; 0.00 mW                     ; 0.02 mW                        ; 0.00 mW                       ;
+; data_b[4]          ; I/O                ; 0.02 mW             ; 0.00 mW                     ; 0.02 mW                        ; 0.00 mW                       ;
+; data_a[5]          ; I/O                ; 0.02 mW             ; 0.00 mW                     ; 0.02 mW                        ; 0.00 mW                       ;
+; data_b[5]          ; I/O                ; 0.02 mW             ; 0.00 mW                     ; 0.02 mW                        ; 0.00 mW                       ;
+; data_a[6]          ; I/O                ; 0.02 mW             ; 0.00 mW                     ; 0.02 mW                        ; 0.00 mW                       ;
+; data_b[6]          ; I/O                ; 0.02 mW             ; 0.00 mW                     ; 0.02 mW                        ; 0.00 mW                       ;
+; data_a[7]          ; I/O                ; 0.02 mW             ; 0.00 mW                     ; 0.02 mW                        ; 0.00 mW                       ;
+; data_b[7]          ; I/O                ; 0.02 mW             ; 0.00 mW                     ; 0.02 mW                        ; 0.00 mW                       ;
+; data_a[8]          ; I/O                ; 0.02 mW             ; 0.00 mW                     ; 0.02 mW                        ; 0.00 mW                       ;
+; data_b[8]          ; I/O                ; 0.02 mW             ; 0.00 mW                     ; 0.02 mW                        ; 0.00 mW                       ;
+; data_a[9]          ; I/O                ; 0.02 mW             ; 0.00 mW                     ; 0.02 mW                        ; 0.00 mW                       ;
+; data_b[9]          ; I/O                ; 0.02 mW             ; 0.00 mW                     ; 0.02 mW                        ; 0.00 mW                       ;
+; data_a[10]         ; I/O                ; 0.02 mW             ; 0.00 mW                     ; 0.02 mW                        ; 0.00 mW                       ;
+; data_b[10]         ; I/O                ; 0.02 mW             ; 0.00 mW                     ; 0.02 mW                        ; 0.00 mW                       ;
+; data_a[11]         ; I/O                ; 0.02 mW             ; 0.00 mW                     ; 0.02 mW                        ; 0.00 mW                       ;
+; data_b[11]         ; I/O                ; 0.02 mW             ; 0.00 mW                     ; 0.02 mW                        ; 0.00 mW                       ;
+; data_a[12]         ; I/O                ; 0.02 mW             ; 0.00 mW                     ; 0.02 mW                        ; 0.00 mW                       ;
+; data_b[12]         ; I/O                ; 0.02 mW             ; 0.00 mW                     ; 0.02 mW                        ; 0.00 mW                       ;
+; data_a[13]         ; I/O                ; 0.02 mW             ; 0.00 mW                     ; 0.02 mW                        ; 0.00 mW                       ;
+; data_b[13]         ; I/O                ; 0.02 mW             ; 0.00 mW                     ; 0.02 mW                        ; 0.00 mW                       ;
+; data_a[14]         ; I/O                ; 0.02 mW             ; 0.00 mW                     ; 0.02 mW                        ; 0.00 mW                       ;
+; data_b[14]         ; I/O                ; 0.02 mW             ; 0.00 mW                     ; 0.02 mW                        ; 0.00 mW                       ;
+; data_a[18]         ; I/O                ; 0.02 mW             ; 0.00 mW                     ; 0.02 mW                        ; 0.00 mW                       ;
+; data_b[18]         ; I/O                ; 0.02 mW             ; 0.00 mW                     ; 0.02 mW                        ; 0.00 mW                       ;
+; data_a[19]         ; I/O                ; 0.02 mW             ; 0.00 mW                     ; 0.02 mW                        ; 0.00 mW                       ;
+; data_b[19]         ; I/O                ; 0.02 mW             ; 0.00 mW                     ; 0.02 mW                        ; 0.00 mW                       ;
+; data_a[20]         ; I/O                ; 0.02 mW             ; 0.00 mW                     ; 0.02 mW                        ; 0.00 mW                       ;
+; data_b[20]         ; I/O                ; 0.02 mW             ; 0.00 mW                     ; 0.02 mW                        ; 0.00 mW                       ;
+; data_a[21]         ; I/O                ; 0.02 mW             ; 0.00 mW                     ; 0.02 mW                        ; 0.00 mW                       ;
+; data_b[21]         ; I/O                ; 0.02 mW             ; 0.00 mW                     ; 0.02 mW                        ; 0.00 mW                       ;
+; data_a[22]         ; I/O                ; 0.02 mW             ; 0.00 mW                     ; 0.02 mW                        ; 0.00 mW                       ;
+; data_b[22]         ; I/O                ; 0.02 mW             ; 0.00 mW                     ; 0.02 mW                        ; 0.00 mW                       ;
+; data_a[23]         ; I/O                ; 0.02 mW             ; 0.00 mW                     ; 0.02 mW                        ; 0.00 mW                       ;
+; data_b[23]         ; I/O                ; 0.02 mW             ; 0.00 mW                     ; 0.02 mW                        ; 0.00 mW                       ;
+; data_a[24]         ; I/O                ; 0.02 mW             ; 0.00 mW                     ; 0.02 mW                        ; 0.00 mW                       ;
+; data_b[24]         ; I/O                ; 0.02 mW             ; 0.00 mW                     ; 0.02 mW                        ; 0.00 mW                       ;
+; data_a[25]         ; I/O                ; 0.02 mW             ; 0.00 mW                     ; 0.02 mW                        ; 0.00 mW                       ;
+; data_b[25]         ; I/O                ; 0.02 mW             ; 0.00 mW                     ; 0.02 mW                        ; 0.00 mW                       ;
+; data_a[26]         ; I/O                ; 0.02 mW             ; 0.00 mW                     ; 0.02 mW                        ; 0.00 mW                       ;
+; data_b[26]         ; I/O                ; 0.02 mW             ; 0.00 mW                     ; 0.02 mW                        ; 0.00 mW                       ;
+; data_a[27]         ; I/O                ; 0.02 mW             ; 0.00 mW                     ; 0.02 mW                        ; 0.00 mW                       ;
+; data_b[27]         ; I/O                ; 0.02 mW             ; 0.00 mW                     ; 0.02 mW                        ; 0.00 mW                       ;
+; data_a[28]         ; I/O                ; 0.02 mW             ; 0.00 mW                     ; 0.02 mW                        ; 0.00 mW                       ;
+; data_b[28]         ; I/O                ; 0.02 mW             ; 0.00 mW                     ; 0.02 mW                        ; 0.00 mW                       ;
+; data_a[29]         ; I/O                ; 0.02 mW             ; 0.00 mW                     ; 0.02 mW                        ; 0.00 mW                       ;
+; data_b[29]         ; I/O                ; 0.02 mW             ; 0.00 mW                     ; 0.02 mW                        ; 0.00 mW                       ;
+; data_a[30]         ; I/O                ; 0.02 mW             ; 0.00 mW                     ; 0.02 mW                        ; 0.00 mW                       ;
+; data_b[30]         ; I/O                ; 0.02 mW             ; 0.00 mW                     ; 0.02 mW                        ; 0.00 mW                       ;
+; data_a[31]         ; I/O                ; 0.02 mW             ; 0.00 mW                     ; 0.02 mW                        ; 0.00 mW                       ;
+; data_b[31]         ; I/O                ; 0.02 mW             ; 0.00 mW                     ; 0.02 mW                        ; 0.00 mW                       ;
+; data_a[32]         ; I/O                ; 0.02 mW             ; 0.00 mW                     ; 0.02 mW                        ; 0.00 mW                       ;
+; data_b[32]         ; I/O                ; 0.02 mW             ; 0.00 mW                     ; 0.02 mW                        ; 0.00 mW                       ;
+; data_a[36]         ; I/O                ; 0.02 mW             ; 0.00 mW                     ; 0.02 mW                        ; 0.00 mW                       ;
+; data_b[36]         ; I/O                ; 0.02 mW             ; 0.00 mW                     ; 0.02 mW                        ; 0.00 mW                       ;
+; data_a[37]         ; I/O                ; 0.02 mW             ; 0.00 mW                     ; 0.02 mW                        ; 0.00 mW                       ;
+; data_b[37]         ; I/O                ; 0.02 mW             ; 0.00 mW                     ; 0.02 mW                        ; 0.00 mW                       ;
+; data_a[38]         ; I/O                ; 0.02 mW             ; 0.00 mW                     ; 0.02 mW                        ; 0.00 mW                       ;
+; data_b[38]         ; I/O                ; 0.02 mW             ; 0.00 mW                     ; 0.02 mW                        ; 0.00 mW                       ;
+; data_a[39]         ; I/O                ; 0.02 mW             ; 0.00 mW                     ; 0.02 mW                        ; 0.00 mW                       ;
+; data_b[39]         ; I/O                ; 0.02 mW             ; 0.00 mW                     ; 0.02 mW                        ; 0.00 mW                       ;
+; data_a[40]         ; I/O                ; 0.02 mW             ; 0.00 mW                     ; 0.02 mW                        ; 0.00 mW                       ;
+; data_b[40]         ; I/O                ; 0.02 mW             ; 0.00 mW                     ; 0.02 mW                        ; 0.00 mW                       ;
+; data_a[41]         ; I/O                ; 0.02 mW             ; 0.00 mW                     ; 0.02 mW                        ; 0.00 mW                       ;
+; data_b[41]         ; I/O                ; 0.02 mW             ; 0.00 mW                     ; 0.02 mW                        ; 0.00 mW                       ;
+; data_a[42]         ; I/O                ; 0.02 mW             ; 0.00 mW                     ; 0.02 mW                        ; 0.00 mW                       ;
+; data_b[42]         ; I/O                ; 0.02 mW             ; 0.00 mW                     ; 0.02 mW                        ; 0.00 mW                       ;
+; data_a[43]         ; I/O                ; 0.02 mW             ; 0.00 mW                     ; 0.02 mW                        ; 0.00 mW                       ;
+; data_b[43]         ; I/O                ; 0.02 mW             ; 0.00 mW                     ; 0.02 mW                        ; 0.00 mW                       ;
+; data_a[44]         ; I/O                ; 0.02 mW             ; 0.00 mW                     ; 0.02 mW                        ; 0.00 mW                       ;
+; data_b[44]         ; I/O                ; 0.02 mW             ; 0.00 mW                     ; 0.02 mW                        ; 0.00 mW                       ;
+; data_a[45]         ; I/O                ; 0.02 mW             ; 0.00 mW                     ; 0.02 mW                        ; 0.00 mW                       ;
+; data_b[45]         ; I/O                ; 0.02 mW             ; 0.00 mW                     ; 0.02 mW                        ; 0.00 mW                       ;
+; data_a[46]         ; I/O                ; 0.02 mW             ; 0.00 mW                     ; 0.02 mW                        ; 0.00 mW                       ;
+; data_b[46]         ; I/O                ; 0.02 mW             ; 0.00 mW                     ; 0.02 mW                        ; 0.00 mW                       ;
+; data_a[47]         ; I/O                ; 0.02 mW             ; 0.00 mW                     ; 0.02 mW                        ; 0.00 mW                       ;
+; data_b[47]         ; I/O                ; 0.02 mW             ; 0.00 mW                     ; 0.02 mW                        ; 0.00 mW                       ;
+; data_a[48]         ; I/O                ; 0.02 mW             ; 0.00 mW                     ; 0.02 mW                        ; 0.00 mW                       ;
+; data_b[48]         ; I/O                ; 0.02 mW             ; 0.00 mW                     ; 0.02 mW                        ; 0.00 mW                       ;
+; data_a[49]         ; I/O                ; 0.02 mW             ; 0.00 mW                     ; 0.02 mW                        ; 0.00 mW                       ;
+; data_b[49]         ; I/O                ; 0.02 mW             ; 0.00 mW                     ; 0.02 mW                        ; 0.00 mW                       ;
+; data_a[50]         ; I/O                ; 0.02 mW             ; 0.00 mW                     ; 0.02 mW                        ; 0.00 mW                       ;
+; data_b[50]         ; I/O                ; 0.02 mW             ; 0.00 mW                     ; 0.02 mW                        ; 0.00 mW                       ;
+; data_a[51]         ; I/O                ; 0.02 mW             ; 0.00 mW                     ; 0.02 mW                        ; 0.00 mW                       ;
+; data_b[51]         ; I/O                ; 0.02 mW             ; 0.00 mW                     ; 0.02 mW                        ; 0.00 mW                       ;
+; data_a[52]         ; I/O                ; 0.02 mW             ; 0.00 mW                     ; 0.02 mW                        ; 0.00 mW                       ;
+; data_b[52]         ; I/O                ; 0.02 mW             ; 0.00 mW                     ; 0.02 mW                        ; 0.00 mW                       ;
+; data_a[53]         ; I/O                ; 0.02 mW             ; 0.00 mW                     ; 0.02 mW                        ; 0.00 mW                       ;
+; data_b[53]         ; I/O                ; 0.02 mW             ; 0.00 mW                     ; 0.02 mW                        ; 0.00 mW                       ;
+; data_a[63]         ; I/O                ; 0.02 mW             ; 0.00 mW                     ; 0.02 mW                        ; 0.00 mW                       ;
+; data_b[63]         ; I/O                ; 0.02 mW             ; 0.00 mW                     ; 0.02 mW                        ; 0.00 mW                       ;
+; data_a[54]         ; I/O                ; 0.02 mW             ; 0.00 mW                     ; 0.02 mW                        ; 0.00 mW                       ;
+; data_b[54]         ; I/O                ; 0.02 mW             ; 0.00 mW                     ; 0.02 mW                        ; 0.00 mW                       ;
+; data_a[55]         ; I/O                ; 0.02 mW             ; 0.00 mW                     ; 0.02 mW                        ; 0.00 mW                       ;
+; data_b[55]         ; I/O                ; 0.02 mW             ; 0.00 mW                     ; 0.02 mW                        ; 0.00 mW                       ;
+; data_a[56]         ; I/O                ; 0.02 mW             ; 0.00 mW                     ; 0.02 mW                        ; 0.00 mW                       ;
+; data_b[56]         ; I/O                ; 0.02 mW             ; 0.00 mW                     ; 0.02 mW                        ; 0.00 mW                       ;
+; data_a[57]         ; I/O                ; 0.02 mW             ; 0.00 mW                     ; 0.02 mW                        ; 0.00 mW                       ;
+; data_b[57]         ; I/O                ; 0.02 mW             ; 0.00 mW                     ; 0.02 mW                        ; 0.00 mW                       ;
+; data_a[58]         ; I/O                ; 0.02 mW             ; 0.00 mW                     ; 0.02 mW                        ; 0.00 mW                       ;
+; data_b[58]         ; I/O                ; 0.02 mW             ; 0.00 mW                     ; 0.02 mW                        ; 0.00 mW                       ;
+; data_a[59]         ; I/O                ; 0.02 mW             ; 0.00 mW                     ; 0.02 mW                        ; 0.00 mW                       ;
+; data_b[59]         ; I/O                ; 0.02 mW             ; 0.00 mW                     ; 0.02 mW                        ; 0.00 mW                       ;
+; data_a[60]         ; I/O                ; 0.02 mW             ; 0.00 mW                     ; 0.02 mW                        ; 0.00 mW                       ;
+; data_b[60]         ; I/O                ; 0.02 mW             ; 0.00 mW                     ; 0.02 mW                        ; 0.00 mW                       ;
+; data_a[61]         ; I/O                ; 0.02 mW             ; 0.00 mW                     ; 0.02 mW                        ; 0.00 mW                       ;
+; data_b[61]         ; I/O                ; 0.02 mW             ; 0.00 mW                     ; 0.02 mW                        ; 0.00 mW                       ;
+; data_a[62]         ; I/O                ; 0.02 mW             ; 0.00 mW                     ; 0.02 mW                        ; 0.00 mW                       ;
+; data_b[62]         ; I/O                ; 0.02 mW             ; 0.00 mW                     ; 0.02 mW                        ; 0.00 mW                       ;
+; rst                ; I/O                ; 0.02 mW             ; 0.00 mW                     ; 0.02 mW                        ; 0.00 mW                       ;
+; valid_i            ; I/O                ; 0.12 mW             ; 0.10 mW                     ; 0.02 mW                        ; 0.01 mW                       ;
+; ready_i            ; I/O                ; 0.12 mW             ; 0.10 mW                     ; 0.02 mW                        ; 0.01 mW                       ;
+; clk                ; I/O                ; 0.52 mW             ; 0.47 mW                     ; 0.02 mW                        ; 0.03 mW                       ;
+; ~ALTERA_DATA0~     ; I/O                ; 0.02 mW             ; 0.00 mW                     ; 0.02 mW                        ; 0.00 mW                       ;
+; Equal0~25DUPLICATE ; Combinational cell ; 0.00 mW             ; 0.00 mW                     ; --                             ; 0.00 mW                       ;
+; empty_i~feeder     ; Combinational cell ; 0.00 mW             ; 0.00 mW                     ; --                             ; 0.00 mW                       ;
++--------------------+--------------------+---------------------+-----------------------------+--------------------------------+-------------------------------+
+(1) The "Block Thermal Static Power" for all block types except Pins is part of the "Core Static Thermal Power Dissipation" value found on the PowerPlay Power Analyzer-->Summary report panel. The "Core Static Thermal Power Dissipation" also contains the thermal static power dissipated by the routing.
+
+
++-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Thermal Power Dissipation by Block Type                                                                                                                                                                           ;
++--------------------+-----------------------------------+-----------------------------+--------------------------------+-------------------------------+-----------------------------------------------------------+
+; Block Type         ; Total Thermal Power by Block Type ; Block Thermal Dynamic Power ; Block Thermal Static Power (1) ; Routing Thermal Dynamic Power ; Block Average Toggle Rate (millions of transitions / sec) ;
++--------------------+-----------------------------------+-----------------------------+--------------------------------+-------------------------------+-----------------------------------------------------------+
+; Combinational cell ; 0.01 mW                           ; 0.01 mW                     ; --                             ; 0.00 mW                       ;    4.045                                                  ;
+; Register cell      ; 0.02 mW                           ; 0.01 mW                     ; --                             ; 0.01 mW                       ;   35.807                                                  ;
+; I/O                ; 7.00 mW                           ; 3.11 mW                     ; 3.84 mW                        ; 0.04 mW                       ;    1.716                                                  ;
++--------------------+-----------------------------------+-----------------------------+--------------------------------+-------------------------------+-----------------------------------------------------------+
+(1) The "Block Thermal Static Power" for all block types except Pins and the Voltage Regulator, if one exists, is part of the "Core Static Thermal Power Dissipation" value found on the PowerPlay Power Analyzer-->Summary report panel. The "Core Static Thermal Power Dissipation" also contains the thermal static power dissipated by the routing.
+
+
++-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Thermal Power Dissipation by Hierarchy                                                                                                                                                                                      ;
++-------------------------------------+--------------------------------------+---------------------------------+-----------------------------------+-----------------------------------+--------------------------------------+
+; Compilation Hierarchy Node          ; Total Thermal Power by Hierarchy (1) ; Block Thermal Dynamic Power (1) ; Block Thermal Static Power (1)(2) ; Routing Thermal Dynamic Power (1) ; Full Hierarchy Name                  ;
++-------------------------------------+--------------------------------------+---------------------------------+-----------------------------------+-----------------------------------+--------------------------------------+
+; |comp                               ; 7.03 mW (7.03 mW)                    ; 3.14 mW (3.14 mW)               ; 3.84 mW (3.84 mW)                 ; 0.05 mW (0.05 mW)                 ; |comp                                ;
+;     |hard_block:auto_generated_inst ; 0.00 mW (0.00 mW)                    ; 0.00 mW (0.00 mW)               ; --                                ; 0.00 mW (0.00 mW)                 ; |comp|hard_block:auto_generated_inst ;
++-------------------------------------+--------------------------------------+---------------------------------+-----------------------------------+-----------------------------------+--------------------------------------+
+(1) Value in parentheses is the power consumed at that level of hierarchy. Value not in parentheses is the power consumed at that level of hierarchy plus the power consumed by all levels of hierarchy below it.
+
+(2) The "Block Thermal Static Power" for all levels of hierarchy except the top-level hierarchy is part of the "Core Static Thermal Power Dissipation" value found on the PowerPlay Power Analyzer-->Summary report panel. The "Core Static Thermal Power Dissipation" also contains the thermal static power dissipated by the routing.
+
+
++--------------------------------------------------------------------+
+; Core Dynamic Thermal Power Dissipation by Clock Domain             ;
++-----------------+-----------------------+--------------------------+
+; Clock Domain    ; Clock Frequency (MHz) ; Total Core Dynamic Power ;
++-----------------+-----------------------+--------------------------+
+; clk             ; 100.00                ; 0.07                     ;
+; No clock domain ; 0.00                  ; 0.00                     ;
++-----------------+-----------------------+--------------------------+
+
+
++--------------------------------------------------------------------------------------------------------------------------------------+
+; Current Drawn from Voltage Supplies Summary                                                                                          ;
++------------------+-------------------------+---------------------------+--------------------------+----------------------------------+
+; Voltage Supply   ; Total Current Drawn (1) ; Dynamic Current Drawn (1) ; Static Current Drawn (1) ; Minimum Power Supply Current (2) ;
++------------------+-------------------------+---------------------------+--------------------------+----------------------------------+
+; VCC              ; 394.77 mA               ; 0.33 mA                   ; 394.44 mA                ; 394.77 mA                        ;
+; VCCIO            ; 8.77 mA                 ; 0.73 mA                   ; 8.05 mA                  ; 1200.00 mA                       ;
+; VCCPD            ; 8.09 mA                 ; 0.38 mA                   ; 7.71 mA                  ; 672.00 mA                        ;
+; VCCPT            ; 22.68 mA                ; 0.00 mA                   ; 22.68 mA                 ; 22.68 mA                         ;
+; VCCA_PLL         ; 2.55 mA                 ; 0.00 mA                   ; 2.55 mA                  ; 2.55 mA                          ;
+; VCCD_PLL         ; 10.00 mA                ; 0.00 mA                   ; 10.00 mA                 ; 10.00 mA                         ;
+; VCCPGM           ; 1.00 mA                 ; 0.00 mA                   ; 1.00 mA                  ; 1.00 mA                          ;
+; VCC_CLKIN        ; 0.01 mA                 ; 0.00 mA                   ; 0.01 mA                  ; 0.01 mA                          ;
+; VCCBAT           ; 0.00 mA                 ; 0.00 mA                   ; 0.00 mA                  ; 0.00 mA                          ;
+; VCCHIP_L         ; 0.00 mA                 ; 0.00 mA                   ; 0.00 mA                  ; 0.00 mA                          ;
+; VCCT_L           ; 0.00 mA                 ; 0.00 mA                   ; 0.00 mA                  ; 0.00 mA                          ;
+; VCCL_GXBL        ; 0.00 mA                 ; 0.00 mA                   ; 0.00 mA                  ; 0.00 mA                          ;
+; VCCR_L           ; 0.00 mA                 ; 0.00 mA                   ; 0.00 mA                  ; 0.00 mA                          ;
+; VCCA_L (3.0V)    ; 0.00 mA                 ; 0.00 mA                   ; 0.00 mA                  ; 0.00 mA                          ;
+; VCCA_L (2.5V)    ; 0.00 mA                 ; 0.00 mA                   ; 0.00 mA                  ; 0.00 mA                          ;
+; VCCH_GXBL (1.4V) ; 0.00 mA                 ; 0.00 mA                   ; 0.00 mA                  ; 0.00 mA                          ;
+; VCCH_GXBL (1.5V) ; 0.00 mA                 ; 0.00 mA                   ; 0.00 mA                  ; 0.00 mA                          ;
+; VCCHIP_R         ; 0.00 mA                 ; 0.00 mA                   ; 0.00 mA                  ; 0.00 mA                          ;
+; VCCT_R           ; 0.00 mA                 ; 0.00 mA                   ; 0.00 mA                  ; 0.00 mA                          ;
+; VCCL_GXBR        ; 0.00 mA                 ; 0.00 mA                   ; 0.00 mA                  ; 0.00 mA                          ;
+; VCCR_R           ; 0.00 mA                 ; 0.00 mA                   ; 0.00 mA                  ; 0.00 mA                          ;
+; VCCA_R (3.0V)    ; 0.00 mA                 ; 0.00 mA                   ; 0.00 mA                  ; 0.00 mA                          ;
+; VCCA_R (2.5V)    ; 0.00 mA                 ; 0.00 mA                   ; 0.00 mA                  ; 0.00 mA                          ;
+; VCCH_GXBR (1.4V) ; 0.00 mA                 ; 0.00 mA                   ; 0.00 mA                  ; 0.00 mA                          ;
+; VCCH_GXBR (1.5V) ; 0.00 mA                 ; 0.00 mA                   ; 0.00 mA                  ; 0.00 mA                          ;
+; VCCAUX           ; 8.00 mA                 ; 0.00 mA                   ; 8.00 mA                  ; 8.00 mA                          ;
++------------------+-------------------------+---------------------------+--------------------------+----------------------------------+
+(1) Currents reported in columns "Total Current Drawn", "Dynamic Current Drawn", and "Static Current Drawn" are sufficient for user operation of the device.  
+(2) Currents reported in column "Minimum Power Supply Current" are sufficient for power-up, configuration, and user operation of the device.
+
+
++-----------------------------------------------------------------------------------------------+
+; VCCIO Supply Current Drawn by I/O Bank                                                        ;
++----------+---------------+---------------------+-----------------------+----------------------+
+; I/O Bank ; VCCIO Voltage ; Total Current Drawn ; Dynamic Current Drawn ; Static Current Drawn ;
++----------+---------------+---------------------+-----------------------+----------------------+
+; 1A       ; 2.5V          ; 0.49 mA             ; 0.00 mA               ; 0.49 mA              ;
+; 1C       ; 2.5V          ; 0.49 mA             ; 0.00 mA               ; 0.49 mA              ;
+; 2C       ; 2.5V          ; 0.49 mA             ; 0.00 mA               ; 0.49 mA              ;
+; 2A       ; 2.5V          ; 0.49 mA             ; 0.00 mA               ; 0.49 mA              ;
+; 3A       ; 2.5V          ; 0.49 mA             ; 0.00 mA               ; 0.49 mA              ;
+; 3C       ; 2.5V          ; 0.49 mA             ; 0.00 mA               ; 0.49 mA              ;
+; 4C       ; 2.5V          ; 0.49 mA             ; 0.00 mA               ; 0.49 mA              ;
+; 4A       ; 2.5V          ; 0.53 mA             ; 0.00 mA               ; 0.53 mA              ;
+; 5A       ; 2.5V          ; 0.51 mA             ; 0.00 mA               ; 0.51 mA              ;
+; 5C       ; 2.5V          ; 0.51 mA             ; 0.00 mA               ; 0.51 mA              ;
+; 6C       ; 2.5V          ; 0.51 mA             ; 0.00 mA               ; 0.51 mA              ;
+; 6A       ; 2.5V          ; 0.51 mA             ; 0.00 mA               ; 0.51 mA              ;
+; 7A       ; 2.5V          ; 0.54 mA             ; 0.00 mA               ; 0.54 mA              ;
+; 7C       ; 2.5V          ; 0.50 mA             ; 0.00 mA               ; 0.50 mA              ;
+; 8C       ; 2.5V          ; 0.49 mA             ; 0.00 mA               ; 0.49 mA              ;
+; 8A       ; 2.5V          ; 1.22 mA             ; 0.73 mA               ; 0.50 mA              ;
+; QL11     ; --            ; --                  ; --                    ; --                   ;
+; QL1      ; --            ; --                  ; --                    ; --                   ;
+; QL0      ; --            ; --                  ; --                    ; --                   ;
+; QL10     ; --            ; --                  ; --                    ; --                   ;
+; QR10     ; --            ; --                  ; --                    ; --                   ;
+; QR0      ; --            ; --                  ; --                    ; --                   ;
+; QR1      ; --            ; --                  ; --                    ; --                   ;
+; QR11     ; --            ; --                  ; --                    ; --                   ;
++----------+---------------+---------------------+-----------------------+----------------------+
+
+
++-----------------------------------------------------------------------------------------------------------------------------------+
+; VCCIO Supply Current Drawn by Voltage                                                                                             ;
++---------------+-------------------------+---------------------------+--------------------------+----------------------------------+
+; VCCIO Voltage ; Total Current Drawn (1) ; Dynamic Current Drawn (1) ; Static Current Drawn (1) ; Minimum Power Supply Current (2) ;
++---------------+-------------------------+---------------------------+--------------------------+----------------------------------+
+; 2.5V          ; 8.77 mA                 ; 0.73 mA                   ; 8.05 mA                  ; 1200.00 mA                       ;
++---------------+-------------------------+---------------------------+--------------------------+----------------------------------+
+(1) Currents reported in columns "Total Current Drawn", "Dynamic Current Drawn", and "Static Current Drawn" are sufficient for user operation of the device.  
+(2) Currents reported in column "Minimum Power Supply Current" are sufficient for power-up, configuration, and user operation of the device.
+
+
++-----------------------------------------------------------------------------------------------+
+; VCCPD Supply Current Drawn by I/O Bank                                                        ;
++----------+---------------+---------------------+-----------------------+----------------------+
+; I/O Bank ; VCCPD Voltage ; Total Current Drawn ; Dynamic Current Drawn ; Static Current Drawn ;
++----------+---------------+---------------------+-----------------------+----------------------+
+; 1A       ; 2.5V          ; 0.44 mA             ; 0.00 mA               ; 0.44 mA              ;
+; 1C       ; 2.5V          ; 0.44 mA             ; 0.00 mA               ; 0.44 mA              ;
+; 2C       ; 2.5V          ; 0.44 mA             ; 0.00 mA               ; 0.44 mA              ;
+; 2A       ; 2.5V          ; 0.44 mA             ; 0.00 mA               ; 0.44 mA              ;
+; 3A       ; 2.5V          ; 0.44 mA             ; 0.00 mA               ; 0.44 mA              ;
+; 3C       ; 2.5V          ; 0.44 mA             ; 0.00 mA               ; 0.44 mA              ;
+; 4C       ; 2.5V          ; 0.44 mA             ; 0.00 mA               ; 0.44 mA              ;
+; 4A       ; 2.5V          ; 0.54 mA             ; 0.00 mA               ; 0.54 mA              ;
+; 5A       ; 2.5V          ; 0.55 mA             ; 0.00 mA               ; 0.55 mA              ;
+; 5C       ; 2.5V          ; 0.53 mA             ; 0.00 mA               ; 0.53 mA              ;
+; 6C       ; 2.5V          ; 0.53 mA             ; 0.00 mA               ; 0.53 mA              ;
+; 6A       ; 2.5V          ; 0.55 mA             ; 0.00 mA               ; 0.55 mA              ;
+; 7A       ; 2.5V          ; 0.58 mA             ; 0.00 mA               ; 0.58 mA              ;
+; 7C       ; 2.5V          ; 0.46 mA             ; 0.00 mA               ; 0.46 mA              ;
+; 8C       ; 2.5V          ; 0.44 mA             ; 0.00 mA               ; 0.44 mA              ;
+; 8A       ; 2.5V          ; 0.84 mA             ; 0.38 mA               ; 0.46 mA              ;
+; QL11     ; --            ; --                  ; --                    ; --                   ;
+; QL1      ; --            ; --                  ; --                    ; --                   ;
+; QL0      ; --            ; --                  ; --                    ; --                   ;
+; QL10     ; --            ; --                  ; --                    ; --                   ;
+; QR10     ; --            ; --                  ; --                    ; --                   ;
+; QR0      ; --            ; --                  ; --                    ; --                   ;
+; QR1      ; --            ; --                  ; --                    ; --                   ;
+; QR11     ; --            ; --                  ; --                    ; --                   ;
++----------+---------------+---------------------+-----------------------+----------------------+
+
+
++-----------------------------------------------------------------------------------------------------------------------------------+
+; VCCPD Supply Current Drawn by Voltage                                                                                             ;
++---------------+-------------------------+---------------------------+--------------------------+----------------------------------+
+; VCCPD Voltage ; Total Current Drawn (1) ; Dynamic Current Drawn (1) ; Static Current Drawn (1) ; Minimum Power Supply Current (2) ;
++---------------+-------------------------+---------------------------+--------------------------+----------------------------------+
+; 2.5V          ; 8.09 mA                 ; 0.38 mA                   ; 7.71 mA                  ; 672.00 mA                        ;
++---------------+-------------------------+---------------------------+--------------------------+----------------------------------+
+(1) Currents reported in columns "Total Current Drawn", "Dynamic Current Drawn", and "Static Current Drawn" are sufficient for user operation of the device.  
+(2) Currents reported in column "Minimum Power Supply Current" are sufficient for power-up, configuration, and user operation of the device.
+
+
++-------------------------------------------------------------------------------------------------------------------------------------------------+
+; Confidence Metric Details                                                                                                                       ;
++----------------------------------------------------------------------------------------+-------------+-------------+------------+---------------+
+; Data Source                                                                            ; Total       ; Pin         ; Registered ; Combinational ;
++----------------------------------------------------------------------------------------+-------------+-------------+------------+---------------+
+; Simulation (from file)                                                                 ;             ;             ;            ;               ;
+;     -- Simulation time nodes in unknown state                                          ; 0.0%        ;             ;            ;               ;
+;     -- Number of signals with Toggle Rate from Simulation                              ; 200 (46.6%) ; 199 (99.5%) ; 1 (100.0%) ; 0 (0.0%)      ;
+;     -- Number of signals with Zero toggle rate, from Simulation                        ; 190 (44.3%) ; 190 (95.0%) ; 0 (0.0%)   ; 0 (0.0%)      ;
+;     -- Number of signals with Static Probability from Simulation                       ; 200 (46.6%) ; 199 (99.5%) ; 1 (100.0%) ; 0 (0.0%)      ;
+;                                                                                        ;             ;             ;            ;               ;
+; Node, entity or clock assignment                                                       ;             ;             ;            ;               ;
+;     -- Number of signals with Toggle Rate from Node, entity or clock assignment        ; 0 (0.0%)    ; 0 (0.0%)    ; 0 (0.0%)   ; 0 (0.0%)      ;
+;     -- Number of signals with Static Probability from Node, entity or clock assignment ; 0 (0.0%)    ; 0 (0.0%)    ; 0 (0.0%)   ; 0 (0.0%)      ;
+;                                                                                        ;             ;             ;            ;               ;
+; Vectorless estimation                                                                  ;             ;             ;            ;               ;
+;     -- Number of signals with Toggle Rate from Vectorless estimation                   ; 228 (53.1%) ; 0 (0.0%)    ; 0 (0.0%)   ; 228 (100.0%)  ;
+;     -- Number of signals with Zero toggle rate, from Vectorless estimation             ; 213 (49.7%) ; 0 (0.0%)    ; 0 (0.0%)   ; 213 (93.4%)   ;
+;     -- Number of signals with Static Probability from Vectorless estimation            ; 228 (53.1%) ; 0 (0.0%)    ; 0 (0.0%)   ; 228 (100.0%)  ;
+;                                                                                        ;             ;             ;            ;               ;
+; Default assignment                                                                     ;             ;             ;            ;               ;
+;     -- Number of signals with Toggle Rate from Default assignment                      ; 0 (0.0%)    ; 0 (0.0%)    ; 0 (0.0%)   ; 0 (0.0%)      ;
+;     -- Number of signals with Static Probability from Default assignment               ; 1 (0.2%)    ; 1 (0.5%)    ; 0 (0.0%)   ; 0 (0.0%)      ;
+;                                                                                        ;             ;             ;            ;               ;
+; Assumed 0                                                                              ;             ;             ;            ;               ;
+;     -- Number of signals with Toggle Rate assumed 0                                    ; 1 (0.2%)    ; 1 (0.5%)    ; 0 (0.0%)   ; 0 (0.0%)      ;
++----------------------------------------------------------------------------------------+-------------+-------------+------------+---------------+
+
+
++--------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Signal Activities                                                                                                                                                        ;
++--------------------+---------------+---------------------------------------------+-----------------------------+--------------------+------------------------------------+
+; Signal             ; Type          ; Toggle Rate (millions of transitions / sec) ; Toggle Rate Data Source (1) ; Static Probability ; Static Probability Data Source (1) ;
++--------------------+---------------+---------------------------------------------+-----------------------------+--------------------+------------------------------------+
+; Equal0~0           ; Combinational ;    0.000                                    ; Vectorless estimation       ; 1.000              ; Vectorless estimation              ;
+; Equal0~1           ; Combinational ;    0.000                                    ; Vectorless estimation       ; 1.000              ; Vectorless estimation              ;
+; Equal0~2           ; Combinational ;    0.000                                    ; Vectorless estimation       ; 0.000              ; Vectorless estimation              ;
+; Equal0~3           ; Combinational ;    0.000                                    ; Vectorless estimation       ; 1.000              ; Vectorless estimation              ;
+; Equal0~4           ; Combinational ;    0.000                                    ; Vectorless estimation       ; 1.000              ; Vectorless estimation              ;
+; Equal0~5           ; Combinational ;    0.000                                    ; Vectorless estimation       ; 1.000              ; Vectorless estimation              ;
+; Equal0~6           ; Combinational ;    0.000                                    ; Vectorless estimation       ; 1.000              ; Vectorless estimation              ;
+; Equal0~7           ; Combinational ;    0.000                                    ; Vectorless estimation       ; 0.000              ; Vectorless estimation              ;
+; Equal0~8           ; Combinational ;    0.000                                    ; Vectorless estimation       ; 1.000              ; Vectorless estimation              ;
+; Equal0~9           ; Combinational ;    0.000                                    ; Vectorless estimation       ; 1.000              ; Vectorless estimation              ;
+; Equal0~10          ; Combinational ;    0.000                                    ; Vectorless estimation       ; 1.000              ; Vectorless estimation              ;
+; Equal0~11          ; Combinational ;    0.000                                    ; Vectorless estimation       ; 1.000              ; Vectorless estimation              ;
+; Equal0~12          ; Combinational ;    0.000                                    ; Vectorless estimation       ; 1.000              ; Vectorless estimation              ;
+; Equal0~13          ; Combinational ;    0.000                                    ; Vectorless estimation       ; 1.000              ; Vectorless estimation              ;
+; Equal0~14          ; Combinational ;    0.000                                    ; Vectorless estimation       ; 1.000              ; Vectorless estimation              ;
+; Equal0~15          ; Combinational ;    0.000                                    ; Vectorless estimation       ; 1.000              ; Vectorless estimation              ;
+; Equal0~16          ; Combinational ;    0.000                                    ; Vectorless estimation       ; 1.000              ; Vectorless estimation              ;
+; Equal0~17          ; Combinational ;    0.000                                    ; Vectorless estimation       ; 1.000              ; Vectorless estimation              ;
+; Equal0~18          ; Combinational ;    0.000                                    ; Vectorless estimation       ; 1.000              ; Vectorless estimation              ;
+; Equal0~19          ; Combinational ;    0.000                                    ; Vectorless estimation       ; 1.000              ; Vectorless estimation              ;
+; Equal0~20          ; Combinational ;    0.000                                    ; Vectorless estimation       ; 1.000              ; Vectorless estimation              ;
+; Equal0~21          ; Combinational ;    0.000                                    ; Vectorless estimation       ; 1.000              ; Vectorless estimation              ;
+; Equal0~22          ; Combinational ;    0.000                                    ; Vectorless estimation       ; 1.000              ; Vectorless estimation              ;
+; Equal0~23          ; Combinational ;    0.000                                    ; Vectorless estimation       ; 1.000              ; Vectorless estimation              ;
+; Equal0~24          ; Combinational ;    0.000                                    ; Vectorless estimation       ; 1.000              ; Vectorless estimation              ;
+; Equal0~25          ; Combinational ;    0.000                                    ; Vectorless estimation       ; 0.000              ; Vectorless estimation              ;
+; Equal0~25DUPLICATE ; Combinational ;    0.000                                    ; Vectorless estimation       ; 0.000              ; Vectorless estimation              ;
+; clk                ; Input Pin     ;  200.000                                    ; Simulation (f1)             ; 0.500              ; Simulation (f1)                    ;
+; data_a[0]          ; Input Pin     ;    0.000                                    ; Simulation (f1)             ; 0.000              ; Simulation (f1)                    ;
+; data_a[1]          ; Input Pin     ;    0.000                                    ; Simulation (f1)             ; 0.000              ; Simulation (f1)                    ;
+; data_a[2]          ; Input Pin     ;    0.000                                    ; Simulation (f1)             ; 0.000              ; Simulation (f1)                    ;
+; data_a[3]          ; Input Pin     ;    0.000                                    ; Simulation (f1)             ; 0.000              ; Simulation (f1)                    ;
+; data_a[4]          ; Input Pin     ;    0.000                                    ; Simulation (f1)             ; 0.000              ; Simulation (f1)                    ;
+; data_a[5]          ; Input Pin     ;    0.000                                    ; Simulation (f1)             ; 0.000              ; Simulation (f1)                    ;
+; data_a[6]          ; Input Pin     ;    0.000                                    ; Simulation (f1)             ; 0.000              ; Simulation (f1)                    ;
+; data_a[7]          ; Input Pin     ;    0.000                                    ; Simulation (f1)             ; 0.000              ; Simulation (f1)                    ;
+; data_a[8]          ; Input Pin     ;    0.000                                    ; Simulation (f1)             ; 0.000              ; Simulation (f1)                    ;
+; data_a[9]          ; Input Pin     ;    0.000                                    ; Simulation (f1)             ; 0.000              ; Simulation (f1)                    ;
+; data_a[10]         ; Input Pin     ;    0.000                                    ; Simulation (f1)             ; 0.000              ; Simulation (f1)                    ;
+; data_a[11]         ; Input Pin     ;    0.000                                    ; Simulation (f1)             ; 0.000              ; Simulation (f1)                    ;
+; data_a[12]         ; Input Pin     ;    0.000                                    ; Simulation (f1)             ; 0.000              ; Simulation (f1)                    ;
+; data_a[13]         ; Input Pin     ;    0.000                                    ; Simulation (f1)             ; 0.000              ; Simulation (f1)                    ;
+; data_a[14]         ; Input Pin     ;    0.000                                    ; Simulation (f1)             ; 0.000              ; Simulation (f1)                    ;
+; data_a[15]         ; Input Pin     ;    0.000                                    ; Simulation (f1)             ; 0.000              ; Simulation (f1)                    ;
+; data_a[16]         ; Input Pin     ;    0.000                                    ; Simulation (f1)             ; 0.000              ; Simulation (f1)                    ;
+; data_a[17]         ; Input Pin     ;    0.000                                    ; Simulation (f1)             ; 0.000              ; Simulation (f1)                    ;
+; data_a[18]         ; Input Pin     ;    0.000                                    ; Simulation (f1)             ; 0.000              ; Simulation (f1)                    ;
+; data_a[19]         ; Input Pin     ;    0.000                                    ; Simulation (f1)             ; 0.000              ; Simulation (f1)                    ;
+; data_a[20]         ; Input Pin     ;    0.000                                    ; Simulation (f1)             ; 0.000              ; Simulation (f1)                    ;
+; data_a[21]         ; Input Pin     ;    0.000                                    ; Simulation (f1)             ; 0.000              ; Simulation (f1)                    ;
+; data_a[22]         ; Input Pin     ;    0.000                                    ; Simulation (f1)             ; 0.000              ; Simulation (f1)                    ;
+; data_a[23]         ; Input Pin     ;    0.000                                    ; Simulation (f1)             ; 0.000              ; Simulation (f1)                    ;
+; data_a[24]         ; Input Pin     ;    0.000                                    ; Simulation (f1)             ; 0.000              ; Simulation (f1)                    ;
+; data_a[25]         ; Input Pin     ;    0.000                                    ; Simulation (f1)             ; 0.000              ; Simulation (f1)                    ;
+; data_a[26]         ; Input Pin     ;    0.000                                    ; Simulation (f1)             ; 0.000              ; Simulation (f1)                    ;
+; data_a[27]         ; Input Pin     ;    0.000                                    ; Simulation (f1)             ; 0.000              ; Simulation (f1)                    ;
+; data_a[28]         ; Input Pin     ;    0.000                                    ; Simulation (f1)             ; 0.000              ; Simulation (f1)                    ;
+; data_a[29]         ; Input Pin     ;    0.000                                    ; Simulation (f1)             ; 0.000              ; Simulation (f1)                    ;
+; data_a[30]         ; Input Pin     ;    0.000                                    ; Simulation (f1)             ; 0.000              ; Simulation (f1)                    ;
+; data_a[31]         ; Input Pin     ;    0.000                                    ; Simulation (f1)             ; 0.000              ; Simulation (f1)                    ;
+; data_a[32]         ; Input Pin     ;    0.000                                    ; Simulation (f1)             ; 0.000              ; Simulation (f1)                    ;
+; data_a[33]         ; Input Pin     ;    0.000                                    ; Simulation (f1)             ; 0.000              ; Simulation (f1)                    ;
+; data_a[34]         ; Input Pin     ;    0.000                                    ; Simulation (f1)             ; 0.000              ; Simulation (f1)                    ;
+; data_a[35]         ; Input Pin     ;    0.000                                    ; Simulation (f1)             ; 0.000              ; Simulation (f1)                    ;
+; data_a[36]         ; Input Pin     ;    0.000                                    ; Simulation (f1)             ; 0.000              ; Simulation (f1)                    ;
+; data_a[37]         ; Input Pin     ;    0.000                                    ; Simulation (f1)             ; 0.000              ; Simulation (f1)                    ;
+; data_a[38]         ; Input Pin     ;    0.000                                    ; Simulation (f1)             ; 0.000              ; Simulation (f1)                    ;
+; data_a[39]         ; Input Pin     ;    0.000                                    ; Simulation (f1)             ; 0.000              ; Simulation (f1)                    ;
+; data_a[40]         ; Input Pin     ;    0.000                                    ; Simulation (f1)             ; 0.000              ; Simulation (f1)                    ;
+; data_a[41]         ; Input Pin     ;    0.000                                    ; Simulation (f1)             ; 0.000              ; Simulation (f1)                    ;
+; data_a[42]         ; Input Pin     ;    0.000                                    ; Simulation (f1)             ; 0.000              ; Simulation (f1)                    ;
+; data_a[43]         ; Input Pin     ;    0.000                                    ; Simulation (f1)             ; 0.000              ; Simulation (f1)                    ;
+; data_a[44]         ; Input Pin     ;    0.000                                    ; Simulation (f1)             ; 0.000              ; Simulation (f1)                    ;
+; data_a[45]         ; Input Pin     ;    0.000                                    ; Simulation (f1)             ; 0.000              ; Simulation (f1)                    ;
+; data_a[46]         ; Input Pin     ;    0.000                                    ; Simulation (f1)             ; 0.000              ; Simulation (f1)                    ;
+; data_a[47]         ; Input Pin     ;    0.000                                    ; Simulation (f1)             ; 0.000              ; Simulation (f1)                    ;
+; data_a[48]         ; Input Pin     ;    0.000                                    ; Simulation (f1)             ; 0.000              ; Simulation (f1)                    ;
+; data_a[49]         ; Input Pin     ;    0.000                                    ; Simulation (f1)             ; 0.000              ; Simulation (f1)                    ;
+; data_a[50]         ; Input Pin     ;    0.000                                    ; Simulation (f1)             ; 0.000              ; Simulation (f1)                    ;
+; data_a[51]         ; Input Pin     ;    0.000                                    ; Simulation (f1)             ; 0.000              ; Simulation (f1)                    ;
+; data_a[52]         ; Input Pin     ;    0.000                                    ; Simulation (f1)             ; 0.000              ; Simulation (f1)                    ;
+; data_a[53]         ; Input Pin     ;    0.000                                    ; Simulation (f1)             ; 0.000              ; Simulation (f1)                    ;
+; data_a[54]         ; Input Pin     ;    0.000                                    ; Simulation (f1)             ; 0.000              ; Simulation (f1)                    ;
+; data_a[55]         ; Input Pin     ;    0.000                                    ; Simulation (f1)             ; 0.000              ; Simulation (f1)                    ;
+; data_a[56]         ; Input Pin     ;    0.000                                    ; Simulation (f1)             ; 0.000              ; Simulation (f1)                    ;
+; data_a[57]         ; Input Pin     ;    0.000                                    ; Simulation (f1)             ; 0.000              ; Simulation (f1)                    ;
+; data_a[58]         ; Input Pin     ;    0.000                                    ; Simulation (f1)             ; 0.000              ; Simulation (f1)                    ;
+; data_a[59]         ; Input Pin     ;    0.000                                    ; Simulation (f1)             ; 0.000              ; Simulation (f1)                    ;
+; data_a[60]         ; Input Pin     ;    0.000                                    ; Simulation (f1)             ; 0.000              ; Simulation (f1)                    ;
+; data_a[61]         ; Input Pin     ;    0.000                                    ; Simulation (f1)             ; 0.000              ; Simulation (f1)                    ;
+; data_a[62]         ; Input Pin     ;    0.000                                    ; Simulation (f1)             ; 0.000              ; Simulation (f1)                    ;
+; data_a[63]         ; Input Pin     ;    0.000                                    ; Simulation (f1)             ; 0.000              ; Simulation (f1)                    ;
+; data_b[0]          ; Input Pin     ;    0.000                                    ; Simulation (f1)             ; 1.000              ; Simulation (f1)                    ;
+; data_b[1]          ; Input Pin     ;    0.000                                    ; Simulation (f1)             ; 0.000              ; Simulation (f1)                    ;
+; data_b[2]          ; Input Pin     ;    0.000                                    ; Simulation (f1)             ; 0.000              ; Simulation (f1)                    ;
+; data_b[3]          ; Input Pin     ;    0.000                                    ; Simulation (f1)             ; 0.000              ; Simulation (f1)                    ;
+; data_b[4]          ; Input Pin     ;    0.000                                    ; Simulation (f1)             ; 0.000              ; Simulation (f1)                    ;
+; data_b[5]          ; Input Pin     ;    0.000                                    ; Simulation (f1)             ; 0.000              ; Simulation (f1)                    ;
+; data_b[6]          ; Input Pin     ;    0.000                                    ; Simulation (f1)             ; 0.000              ; Simulation (f1)                    ;
+; data_b[7]          ; Input Pin     ;    0.000                                    ; Simulation (f1)             ; 0.000              ; Simulation (f1)                    ;
+; data_b[8]          ; Input Pin     ;    0.000                                    ; Simulation (f1)             ; 0.000              ; Simulation (f1)                    ;
+; data_b[9]          ; Input Pin     ;    0.000                                    ; Simulation (f1)             ; 0.000              ; Simulation (f1)                    ;
+; data_b[10]         ; Input Pin     ;    0.000                                    ; Simulation (f1)             ; 0.000              ; Simulation (f1)                    ;
+; data_b[11]         ; Input Pin     ;    0.000                                    ; Simulation (f1)             ; 0.000              ; Simulation (f1)                    ;
+; data_b[12]         ; Input Pin     ;    0.000                                    ; Simulation (f1)             ; 0.000              ; Simulation (f1)                    ;
+; data_b[13]         ; Input Pin     ;    0.000                                    ; Simulation (f1)             ; 0.000              ; Simulation (f1)                    ;
+; data_b[14]         ; Input Pin     ;    0.000                                    ; Simulation (f1)             ; 0.000              ; Simulation (f1)                    ;
+; data_b[15]         ; Input Pin     ;    0.000                                    ; Simulation (f1)             ; 0.000              ; Simulation (f1)                    ;
+; data_b[16]         ; Input Pin     ;    0.000                                    ; Simulation (f1)             ; 0.000              ; Simulation (f1)                    ;
+; data_b[17]         ; Input Pin     ;    0.000                                    ; Simulation (f1)             ; 0.000              ; Simulation (f1)                    ;
+; data_b[18]         ; Input Pin     ;    0.000                                    ; Simulation (f1)             ; 0.000              ; Simulation (f1)                    ;
+; data_b[19]         ; Input Pin     ;    0.000                                    ; Simulation (f1)             ; 0.000              ; Simulation (f1)                    ;
+; data_b[20]         ; Input Pin     ;    0.000                                    ; Simulation (f1)             ; 0.000              ; Simulation (f1)                    ;
+; data_b[21]         ; Input Pin     ;    0.000                                    ; Simulation (f1)             ; 0.000              ; Simulation (f1)                    ;
+; data_b[22]         ; Input Pin     ;    0.000                                    ; Simulation (f1)             ; 0.000              ; Simulation (f1)                    ;
+; data_b[23]         ; Input Pin     ;    0.000                                    ; Simulation (f1)             ; 0.000              ; Simulation (f1)                    ;
+; data_b[24]         ; Input Pin     ;    0.000                                    ; Simulation (f1)             ; 0.000              ; Simulation (f1)                    ;
+; data_b[25]         ; Input Pin     ;    0.000                                    ; Simulation (f1)             ; 0.000              ; Simulation (f1)                    ;
+; data_b[26]         ; Input Pin     ;    0.000                                    ; Simulation (f1)             ; 0.000              ; Simulation (f1)                    ;
+; data_b[27]         ; Input Pin     ;    0.000                                    ; Simulation (f1)             ; 0.000              ; Simulation (f1)                    ;
+; data_b[28]         ; Input Pin     ;    0.000                                    ; Simulation (f1)             ; 0.000              ; Simulation (f1)                    ;
+; data_b[29]         ; Input Pin     ;    0.000                                    ; Simulation (f1)             ; 0.000              ; Simulation (f1)                    ;
+; data_b[30]         ; Input Pin     ;    0.000                                    ; Simulation (f1)             ; 0.000              ; Simulation (f1)                    ;
+; data_b[31]         ; Input Pin     ;    0.000                                    ; Simulation (f1)             ; 0.000              ; Simulation (f1)                    ;
+; data_b[32]         ; Input Pin     ;    0.000                                    ; Simulation (f1)             ; 0.000              ; Simulation (f1)                    ;
+; data_b[33]         ; Input Pin     ;    0.000                                    ; Simulation (f1)             ; 0.000              ; Simulation (f1)                    ;
+; data_b[34]         ; Input Pin     ;    0.000                                    ; Simulation (f1)             ; 0.000              ; Simulation (f1)                    ;
+; data_b[35]         ; Input Pin     ;    0.000                                    ; Simulation (f1)             ; 0.000              ; Simulation (f1)                    ;
+; data_b[36]         ; Input Pin     ;    0.000                                    ; Simulation (f1)             ; 0.000              ; Simulation (f1)                    ;
+; data_b[37]         ; Input Pin     ;    0.000                                    ; Simulation (f1)             ; 0.000              ; Simulation (f1)                    ;
+; data_b[38]         ; Input Pin     ;    0.000                                    ; Simulation (f1)             ; 0.000              ; Simulation (f1)                    ;
+; data_b[39]         ; Input Pin     ;    0.000                                    ; Simulation (f1)             ; 0.000              ; Simulation (f1)                    ;
+; data_b[40]         ; Input Pin     ;    0.000                                    ; Simulation (f1)             ; 0.000              ; Simulation (f1)                    ;
+; data_b[41]         ; Input Pin     ;    0.000                                    ; Simulation (f1)             ; 0.000              ; Simulation (f1)                    ;
+; data_b[42]         ; Input Pin     ;    0.000                                    ; Simulation (f1)             ; 0.000              ; Simulation (f1)                    ;
+; data_b[43]         ; Input Pin     ;    0.000                                    ; Simulation (f1)             ; 0.000              ; Simulation (f1)                    ;
+; data_b[44]         ; Input Pin     ;    0.000                                    ; Simulation (f1)             ; 0.000              ; Simulation (f1)                    ;
+; data_b[45]         ; Input Pin     ;    0.000                                    ; Simulation (f1)             ; 0.000              ; Simulation (f1)                    ;
+; data_b[46]         ; Input Pin     ;    0.000                                    ; Simulation (f1)             ; 0.000              ; Simulation (f1)                    ;
+; data_b[47]         ; Input Pin     ;    0.000                                    ; Simulation (f1)             ; 0.000              ; Simulation (f1)                    ;
+; data_b[48]         ; Input Pin     ;    0.000                                    ; Simulation (f1)             ; 0.000              ; Simulation (f1)                    ;
+; data_b[49]         ; Input Pin     ;    0.000                                    ; Simulation (f1)             ; 0.000              ; Simulation (f1)                    ;
+; data_b[50]         ; Input Pin     ;    0.000                                    ; Simulation (f1)             ; 0.000              ; Simulation (f1)                    ;
+; data_b[51]         ; Input Pin     ;    0.000                                    ; Simulation (f1)             ; 0.000              ; Simulation (f1)                    ;
+; data_b[52]         ; Input Pin     ;    0.000                                    ; Simulation (f1)             ; 0.000              ; Simulation (f1)                    ;
+; data_b[53]         ; Input Pin     ;    0.000                                    ; Simulation (f1)             ; 0.000              ; Simulation (f1)                    ;
+; data_b[54]         ; Input Pin     ;    0.000                                    ; Simulation (f1)             ; 0.000              ; Simulation (f1)                    ;
+; data_b[55]         ; Input Pin     ;    0.000                                    ; Simulation (f1)             ; 0.000              ; Simulation (f1)                    ;
+; data_b[56]         ; Input Pin     ;    0.000                                    ; Simulation (f1)             ; 0.000              ; Simulation (f1)                    ;
+; data_b[57]         ; Input Pin     ;    0.000                                    ; Simulation (f1)             ; 0.000              ; Simulation (f1)                    ;
+; data_b[58]         ; Input Pin     ;    0.000                                    ; Simulation (f1)             ; 0.000              ; Simulation (f1)                    ;
+; data_b[59]         ; Input Pin     ;    0.000                                    ; Simulation (f1)             ; 0.000              ; Simulation (f1)                    ;
+; data_b[60]         ; Input Pin     ;    0.000                                    ; Simulation (f1)             ; 0.000              ; Simulation (f1)                    ;
+; data_b[61]         ; Input Pin     ;    0.000                                    ; Simulation (f1)             ; 0.000              ; Simulation (f1)                    ;
+; data_b[62]         ; Input Pin     ;    0.000                                    ; Simulation (f1)             ; 0.000              ; Simulation (f1)                    ;
+; data_b[63]         ; Input Pin     ;    0.000                                    ; Simulation (f1)             ; 0.000              ; Simulation (f1)                    ;
+; data_o[0]          ; Output Pin    ;    0.000                                    ; Simulation (f1)             ; 1.000              ; Simulation (f1)                    ;
+; data_o[1]          ; Output Pin    ;    0.000                                    ; Simulation (f1)             ; 0.000              ; Simulation (f1)                    ;
+; data_o[2]          ; Output Pin    ;    0.000                                    ; Simulation (f1)             ; 0.000              ; Simulation (f1)                    ;
+; data_o[3]          ; Output Pin    ;    0.000                                    ; Simulation (f1)             ; 0.000              ; Simulation (f1)                    ;
+; data_o[4]          ; Output Pin    ;    0.000                                    ; Simulation (f1)             ; 0.000              ; Simulation (f1)                    ;
+; data_o[5]          ; Output Pin    ;    0.000                                    ; Simulation (f1)             ; 0.000              ; Simulation (f1)                    ;
+; data_o[6]          ; Output Pin    ;    0.000                                    ; Simulation (f1)             ; 0.000              ; Simulation (f1)                    ;
+; data_o[7]          ; Output Pin    ;    0.000                                    ; Simulation (f1)             ; 0.000              ; Simulation (f1)                    ;
+; data_o[8]          ; Output Pin    ;    0.000                                    ; Simulation (f1)             ; 0.000              ; Simulation (f1)                    ;
+; data_o[9]          ; Output Pin    ;    0.000                                    ; Simulation (f1)             ; 0.000              ; Simulation (f1)                    ;
+; data_o[10]         ; Output Pin    ;    0.000                                    ; Simulation (f1)             ; 0.000              ; Simulation (f1)                    ;
+; data_o[11]         ; Output Pin    ;    0.000                                    ; Simulation (f1)             ; 0.000              ; Simulation (f1)                    ;
+; data_o[12]         ; Output Pin    ;    0.000                                    ; Simulation (f1)             ; 0.000              ; Simulation (f1)                    ;
+; data_o[13]         ; Output Pin    ;    0.000                                    ; Simulation (f1)             ; 0.000              ; Simulation (f1)                    ;
+; data_o[14]         ; Output Pin    ;    0.000                                    ; Simulation (f1)             ; 0.000              ; Simulation (f1)                    ;
+; data_o[15]         ; Output Pin    ;    0.000                                    ; Simulation (f1)             ; 0.000              ; Simulation (f1)                    ;
+; data_o[16]         ; Output Pin    ;    0.000                                    ; Simulation (f1)             ; 0.000              ; Simulation (f1)                    ;
+; data_o[17]         ; Output Pin    ;    0.000                                    ; Simulation (f1)             ; 0.000              ; Simulation (f1)                    ;
+; data_o[18]         ; Output Pin    ;    0.000                                    ; Simulation (f1)             ; 0.000              ; Simulation (f1)                    ;
+; data_o[19]         ; Output Pin    ;    0.000                                    ; Simulation (f1)             ; 0.000              ; Simulation (f1)                    ;
+; data_o[20]         ; Output Pin    ;    0.000                                    ; Simulation (f1)             ; 0.000              ; Simulation (f1)                    ;
+; data_o[21]         ; Output Pin    ;    0.000                                    ; Simulation (f1)             ; 0.000              ; Simulation (f1)                    ;
+; data_o[22]         ; Output Pin    ;    0.000                                    ; Simulation (f1)             ; 0.000              ; Simulation (f1)                    ;
+; data_o[23]         ; Output Pin    ;    0.000                                    ; Simulation (f1)             ; 0.000              ; Simulation (f1)                    ;
+; data_o[24]         ; Output Pin    ;    0.000                                    ; Simulation (f1)             ; 0.000              ; Simulation (f1)                    ;
+; data_o[25]         ; Output Pin    ;    0.000                                    ; Simulation (f1)             ; 0.000              ; Simulation (f1)                    ;
+; data_o[26]         ; Output Pin    ;    0.000                                    ; Simulation (f1)             ; 0.000              ; Simulation (f1)                    ;
+; data_o[27]         ; Output Pin    ;    0.000                                    ; Simulation (f1)             ; 0.000              ; Simulation (f1)                    ;
+; data_o[28]         ; Output Pin    ;    0.000                                    ; Simulation (f1)             ; 0.000              ; Simulation (f1)                    ;
+; data_o[29]         ; Output Pin    ;    0.000                                    ; Simulation (f1)             ; 0.000              ; Simulation (f1)                    ;
+; data_o[30]         ; Output Pin    ;    0.000                                    ; Simulation (f1)             ; 0.000              ; Simulation (f1)                    ;
+; data_o[31]         ; Output Pin    ;    0.000                                    ; Simulation (f1)             ; 0.000              ; Simulation (f1)                    ;
+; data_o[32]         ; Output Pin    ;    0.000                                    ; Simulation (f1)             ; 0.000              ; Simulation (f1)                    ;
+; data_o[33]         ; Output Pin    ;    0.000                                    ; Simulation (f1)             ; 0.000              ; Simulation (f1)                    ;
+; data_o[34]         ; Output Pin    ;    0.000                                    ; Simulation (f1)             ; 0.000              ; Simulation (f1)                    ;
+; data_o[35]         ; Output Pin    ;    0.000                                    ; Simulation (f1)             ; 0.000              ; Simulation (f1)                    ;
+; data_o[36]         ; Output Pin    ;    0.000                                    ; Simulation (f1)             ; 0.000              ; Simulation (f1)                    ;
+; data_o[37]         ; Output Pin    ;    0.000                                    ; Simulation (f1)             ; 0.000              ; Simulation (f1)                    ;
+; data_o[38]         ; Output Pin    ;    0.000                                    ; Simulation (f1)             ; 0.000              ; Simulation (f1)                    ;
+; data_o[39]         ; Output Pin    ;    0.000                                    ; Simulation (f1)             ; 0.000              ; Simulation (f1)                    ;
+; data_o[40]         ; Output Pin    ;    0.000                                    ; Simulation (f1)             ; 0.000              ; Simulation (f1)                    ;
+; data_o[41]         ; Output Pin    ;    0.000                                    ; Simulation (f1)             ; 0.000              ; Simulation (f1)                    ;
+; data_o[42]         ; Output Pin    ;    0.000                                    ; Simulation (f1)             ; 0.000              ; Simulation (f1)                    ;
+; data_o[43]         ; Output Pin    ;    0.000                                    ; Simulation (f1)             ; 0.000              ; Simulation (f1)                    ;
+; data_o[44]         ; Output Pin    ;    0.000                                    ; Simulation (f1)             ; 0.000              ; Simulation (f1)                    ;
+; data_o[45]         ; Output Pin    ;    0.000                                    ; Simulation (f1)             ; 0.000              ; Simulation (f1)                    ;
+; data_o[46]         ; Output Pin    ;    0.000                                    ; Simulation (f1)             ; 0.000              ; Simulation (f1)                    ;
+; data_o[47]         ; Output Pin    ;    0.000                                    ; Simulation (f1)             ; 0.000              ; Simulation (f1)                    ;
+; data_o[48]         ; Output Pin    ;    0.000                                    ; Simulation (f1)             ; 0.000              ; Simulation (f1)                    ;
+; data_o[49]         ; Output Pin    ;    0.000                                    ; Simulation (f1)             ; 0.000              ; Simulation (f1)                    ;
+; data_o[50]         ; Output Pin    ;    0.000                                    ; Simulation (f1)             ; 0.000              ; Simulation (f1)                    ;
+; data_o[51]         ; Output Pin    ;    0.000                                    ; Simulation (f1)             ; 0.000              ; Simulation (f1)                    ;
+; data_o[52]         ; Output Pin    ;    0.000                                    ; Simulation (f1)             ; 0.000              ; Simulation (f1)                    ;
+; data_o[53]         ; Output Pin    ;    0.000                                    ; Simulation (f1)             ; 0.000              ; Simulation (f1)                    ;
+; data_o[54]         ; Output Pin    ;    0.000                                    ; Simulation (f1)             ; 0.000              ; Simulation (f1)                    ;
+; data_o[55]         ; Output Pin    ;    0.000                                    ; Simulation (f1)             ; 0.000              ; Simulation (f1)                    ;
+; data_o[56]         ; Output Pin    ;    0.000                                    ; Simulation (f1)             ; 0.000              ; Simulation (f1)                    ;
+; data_o[57]         ; Output Pin    ;    0.000                                    ; Simulation (f1)             ; 0.000              ; Simulation (f1)                    ;
+; data_o[58]         ; Output Pin    ;    0.000                                    ; Simulation (f1)             ; 0.000              ; Simulation (f1)                    ;
+; data_o[59]         ; Output Pin    ;    0.000                                    ; Simulation (f1)             ; 0.000              ; Simulation (f1)                    ;
+; data_o[60]         ; Output Pin    ;    0.000                                    ; Simulation (f1)             ; 0.000              ; Simulation (f1)                    ;
+; data_o[61]         ; Output Pin    ;    0.000                                    ; Simulation (f1)             ; 0.000              ; Simulation (f1)                    ;
+; data_o[62]         ; Output Pin    ;    0.000                                    ; Simulation (f1)             ; 0.000              ; Simulation (f1)                    ;
+; data_o[63]         ; Output Pin    ;    0.000                                    ; Simulation (f1)             ; 0.000              ; Simulation (f1)                    ;
+; empty_i            ; Registered    ;   35.807                                    ; Simulation (f1)             ; 0.821              ; Simulation (f1)                    ;
+; empty_i~0          ; Combinational ;   58.656                                    ; Vectorless estimation       ; 0.821              ; Vectorless estimation              ;
+; empty_i~feeder     ; Combinational ;   58.656                                    ; Vectorless estimation       ; 0.821              ; Vectorless estimation              ;
+; ready_i            ; Input Pin     ;   35.807                                    ; Simulation (f1)             ; 0.821              ; Simulation (f1)                    ;
+; ready_o            ; Output Pin    ;   35.807                                    ; Simulation (f1)             ; 0.821              ; Simulation (f1)                    ;
+; rst                ; Input Pin     ;    0.000                                    ; Simulation (f1)             ; 0.000              ; Simulation (f1)                    ;
+; update_flag        ; Output Pin    ;    0.000                                    ; Simulation (f1)             ; 1.000              ; Simulation (f1)                    ;
+; valid_i            ; Input Pin     ;   35.807                                    ; Simulation (f1)             ; 0.179              ; Simulation (f1)                    ;
+; valid_o            ; Output Pin    ;   35.807                                    ; Simulation (f1)             ; 0.179              ; Simulation (f1)                    ;
+; ~ALTERA_DATA0~     ; Input Pin     ;    0.000                                    ; Assumed 0                   ; 0.500              ; Default assignment                 ;
++--------------------+---------------+---------------------------------------------+-----------------------------+--------------------+------------------------------------+
+(1) See the Power Analyzer Simulation Files Read report panel for detailed information for each simulation file identifier.
+
+
++-------------------------+
+; Power Analyzer Messages ;
++-------------------------+
+Info: *******************************************************************
+Info: Running Quartus Prime Power Analyzer
+    Info: Version 18.1.0 Build 625 09/12/2018 SJ Standard Edition
+    Info: Processing started: Tue Dec 10 21:05:27 2019
+Info: Command: quartus_pow --read_settings_files=off --write_settings_files=off graphicionado_rtl -c graphicionado_rtl
+Info (21076): High junction temperature operating condition is not set. Assuming a default value of '85'.
+Info (21076): Low junction temperature operating condition is not set. Assuming a default value of '0'.
+Info (222002): Starting scan of VCD file simulation/modelsim/a3.vcd (0 ns to End of File) for signal static probabilities and transition densities
+Info (222003): Finished scan of VCD file simulation/modelsim/a3.vcd (0 ns to End of File) for signal static probabilities and transition densities
+Info (332104): Reading SDC File: 'a3.sdc'
+Info (332143): No user constrained clock uncertainty found in the design. Calling "derive_clock_uncertainty"
+Info (332154): The derive_clock_uncertainty command did not apply clock uncertainty to any clock-to-clock transfers.
+Info (223000): Starting Vectorless Power Activity Estimation
+Info (223001): Completed Vectorless Power Activity Estimation
+Info (215037): Detailed signal activity file source information is not written to output Signal Activity File.
+Info (218000): Using Advanced I/O Power to simulate I/O buffers with the specified board trace model
+Info (334003): Started post-fitting delay annotation
+Info (334004): Delay annotation completed successfully
+Info (215049): Average toggle rate for this design is 2.158 millions of transitions / sec
+Info (215031): Total thermal power estimate for the design is 468.79 mW
+Info: Quartus Prime Power Analyzer was successful. 0 errors, 0 warnings
+    Info: Peak virtual memory: 1416 megabytes
+    Info: Processing ended: Tue Dec 10 21:05:45 2019
+    Info: Elapsed time: 00:00:18
+    Info: Total CPU time (on all processors): 00:00:12
+
+

@@ -11,15 +11,17 @@
 //`define READ_SRC_PROPERTY
 //`define READ_SRC_EDGES
 //`define READ_DST_PROPERTY
-`define PROCESS_EDGE
+//`define PROCESS_EDGE
 //`define CONTROL_ATOMIC_UPDATE
 //`define READ_TEMP_DST_PROPERTY
 //`define REDUCE
 //`define WRITE_TEMP_DST_PROPERTY
 //`define READ_VERTEX_PROPERTY
 //`define READ_TEMP_VERTEX_PROPERTY
-//`define APPLY
+`define APPLY
 //`define WRITE_VERTEX_PROPERTY
+
+//`define DEBUG
 
 module tb;
 
@@ -80,7 +82,7 @@ timeprecision 1ns;
   logic ready; 
 `endif
 `ifdef CONTROL_ATOMIC_UPDATE
-  string trace_file = "trace/ControlAtomicUpdate_0_in.csv";
+  string trace_file = "/home/jliu128/cs598/cs598jt/trace/ControlAtomicUpdate_0_in.csv";
   string format_string = "%d,%d,%d,%d,%d,%d,%d,%d,%d,%d,%f,%f,%d,%d,%d,%d,%d,%d,%d,%d\n";
   sim_event_control_atomic_update_t sim_event;
   pipeline_data_t in_data;
@@ -141,7 +143,7 @@ timeprecision 1ns;
   logic [63:0] mem_result; 
 `endif
 `ifdef APPLY
-  string trace_file = "trace/Apply_0_in.csv";
+  string trace_file = "/home/jliu128/cs598/cs598jt/trace/Apply_0_in.csv";
   string format_string = "%d,%d,%d,%d,%d,%d,%d,%d,%d,%d,%f,%f,%d,%d,%d,%d,%d,%d\n";
   sim_event_apply_t sim_event;
   pipeline_data_t in_data;
@@ -150,7 +152,7 @@ timeprecision 1ns;
   logic ready; 
 `endif
 `ifdef WRITE_VERTEX_PROPERTY
-  string trace_file = "trace/WriteVertexProperty_0_in.csv";
+  string trace_file = "/home/jliu128/cs598/cs598jt/trace/WriteVertexProperty_0_in.csv";
   string format_string = "%d,%d,%d,%d,%d,%d,%d,%d,%d,%d,%f,%f,%d,%d,%d,%d,%d,%d\n";
   sim_event_write_vertex_property_t sim_event;
   pipeline_data_t in_data;
@@ -200,7 +202,7 @@ seq_mem_module P1 (
 rand_mem_read_module P4 (
     .clk(clk)
     ,.rst(reset)
-    ,.data_i(mem_result)
+    ,.data_i(in_data.vertex_dst_id_addr)
     ,.valid_i(valid)
     ,.ready_o()
     ,.mem_read()
@@ -227,7 +229,20 @@ comp P5 (
 );
 `endif
 `ifdef CONTROL_ATOMIC_UPDATE
-
+dep_check P6 (
+    .clk(clk)
+    ,.rst(reset)
+    ,.data_check_a(p7_dst_id)
+    ,.data_check_b(p8_dst_id)
+    ,.data_check_c(p9_dst_id)
+    ,.data_i(in_data.vertex_dst_id)
+    ,.valid_i(valid)
+    ,.ready_o()
+    ,.valid_o()
+    ,.data_o()
+    ,.ready_i(ready)
+    ,.dep()
+);
 `endif
 `ifdef READ_TEMP_DST_PROPERTY
 
@@ -245,10 +260,33 @@ comp P5 (
 
 `endif
 `ifdef APPLY
-
+comp A3 (
+    .clk(clk)
+    ,.rst(reset)
+    ,.data_a(in_data.vertex_dst_data)
+    ,.data_b(in_data.vertex_temp_dst_data)
+    ,.valid_i(valid)
+    ,.ready_o()
+    ,.valid_o()
+    ,.data_o()
+    ,.ready_i(ready)
+    ,.update_flag()
+    //complete??
+);
 `endif
 `ifdef WRITE_VERTEX_PROPERTY
-
+rand_mem_write_module A4 (
+    .clk(clk)
+    ,.rst(reset)
+    ,.data_i({in_data.updated, address, in_data.vertex_dst_data})
+    ,.valid_i(valid)
+    ,.ready_o()
+    ,.mem_write()
+    ,.mem_addr()
+    ,.mem_wdata()
+    ,.mem_resp(mem_flag)
+    ,.done()
+    );
 `endif
 
   initial begin
@@ -647,6 +685,7 @@ comp P5 (
                sim_event.mem_flag,
                sim_event.address)>0) begin
 `endif
+`ifdef DEBUG
           $display(format_string,
                    sim_event.tick, 
                    sim_event.pipeline_data.vertex_id, 
@@ -740,6 +779,7 @@ comp P5 (
                sim_event.valid, 
                sim_event.mem_flag,
                sim_event.address);
+`endif
 `endif
         end
         else begin

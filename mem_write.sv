@@ -41,7 +41,7 @@ logic empty_i;
 
 `ifdef A4
 logic update_flag;
-assign update_flag = data_i_reg[input_width];
+assign update_flag = data_i_reg[input_width-1];
 `endif
 
 assign ready_o = empty_i & done;
