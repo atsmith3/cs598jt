@@ -874,7 +874,7 @@ rand_mem_write_module A4 (
     if(done == 1) begin 
       $display("Ending sim: done = %d", done);
       $fclose(fd);
-      $stop;
+      $finish;
     end
     if(clk == 1'b1) begin
       curr_tick = curr_tick + 1;

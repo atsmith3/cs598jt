@@ -70,6 +70,10 @@ PLLJ_PLLSPE_INFO.txt
 # Vim
 *.swp
 
+gsim_out/*
+!gsim_out/*.sh
+!gsim_out/*.py
+
 *.wlf
 transcript
 trace/*
