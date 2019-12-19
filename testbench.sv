@@ -37,8 +37,8 @@ timeprecision 1ns;
   //---------------------------------------------------------------------------
   // DUT SIGNALS
   //---------------------------------------------------------------------------
+  string trace_file = `STRINGIFY(`TRACE_PATH);
 `ifdef READ_SRC_PROPERTY
-  string trace_file = "/home/jliu128/cs598/cs598jt/trace/ReadSrcProperty_0_in.csv";
   string format_string = "%d,%d,%d,%d,%d,%d,%d,%d,%d,%d,%f,%f,%d,%d,%d,%d,%d,%d,%d,%d,%d,%d\n";
   sim_event_read_src_property_t sim_event;
   pipeline_data_t in_data;
@@ -51,7 +51,6 @@ timeprecision 1ns;
   logic iteration_reset;
 `endif
 `ifdef READ_SRC_EDGES
-  string trace_file = "/home/jliu128/cs598/cs598jt/trace/ReadSrcEdges_0_in.csv";
   string format_string = "%d,%d,%d,%d,%d,%d,%d,%d,%d,%d,%f,%f,%d,%d,%d,%d,%d,%d,%d,%f,%d,%d,%d\n";
   sim_event_read_src_edges_t sim_event;
   pipeline_data_t in_data;
@@ -65,7 +64,6 @@ timeprecision 1ns;
   logic [63:0] num_edges;
 `endif
 `ifdef READ_DST_PROPERTY
-  string trace_file = "/home/jliu128/cs598/cs598jt/trace/ReadDstProperty_0_0_in.csv";
   string format_string = "%d,%d,%d,%d,%d,%d,%d,%d,%d,%d,%f,%f,%d,%d,%d,%d,%d,%d,%d\n";
   sim_event_read_dst_property_t sim_event;
   pipeline_data_t in_data;
@@ -75,7 +73,6 @@ timeprecision 1ns;
   logic [63:0] mem_result; 
 `endif
 `ifdef PROCESS_EDGE
-  string trace_file = "/home/jliu128/cs598/cs598jt/trace/ProcessEdge_0_in.csv";
   string format_string = "%d,%d,%d,%d,%d,%d,%d,%d,%d,%d,%f,%f,%d,%d,%d,%d,%d,%d\n";
   sim_event_process_edge_t sim_event;
   pipeline_data_t in_data;
@@ -84,7 +81,6 @@ timeprecision 1ns;
   logic ready; 
 `endif
 `ifdef CONTROL_ATOMIC_UPDATE
-  string trace_file = "/home/jliu128/cs598/cs598jt/trace/ControlAtomicUpdate_0_in.csv";
   string format_string = "%d,%d,%d,%d,%d,%d,%d,%d,%d,%d,%f,%f,%d,%d,%d,%d,%d,%d,%d,%d\n";
   sim_event_control_atomic_update_t sim_event;
   pipeline_data_t in_data;
@@ -95,7 +91,6 @@ timeprecision 1ns;
   logic [63:0] p9_dst_id;
 `endif
 `ifdef READ_TEMP_DST_PROPERTY
-  string trace_file = "/home/jliu128/cs598/cs598jt/trace/ReadTempDstProperty_0_in.csv";
   string format_string = "%d,%d,%d,%d,%d,%d,%d,%d,%d,%d,%f,%f,%d,%d,%d,%d,%d,%d,%d\n";
   sim_event_read_temp_dst_property_t sim_event;
   pipeline_data_t in_data;
@@ -105,7 +100,6 @@ timeprecision 1ns;
   logic [63:0] mem_result; 
 `endif
 `ifdef REDUCE
-  string trace_file = "/home/jliu128/cs598/cs598jt/trace/Reduce_0_in.csv";
   string format_string = "%d,%d,%d,%d,%d,%d,%d,%d,%d,%d,%f,%f,%d,%d,%d,%d,%d,%d\n";
   sim_event_reduce_t sim_event;
   pipeline_data_t in_data;
@@ -114,8 +108,6 @@ timeprecision 1ns;
   logic ready; 
 `endif
 `ifdef WRITE_TEMP_DST_PROPERTY
-  string trace_file = `STRINGIFY(`TRACE_PATH);
-  //string trace_file = "/home/jliu128/cs598/cs598jt/trace/WriteTempDstProperty_0_in.csv";
   string format_string = "%d,%d,%d,%d,%d,%d,%d,%d,%d,%d,%f,%f,%d,%d,%d,%d,%d\n";
   sim_event_write_temp_dst_property_t sim_event;
   pipeline_data_t in_data;
@@ -123,7 +115,6 @@ timeprecision 1ns;
   logic mem_flag;
 `endif
 `ifdef READ_VERTEX_PROPERTY
-  string trace_file = "/home/jliu128/cs598/cs598jt/trace/ReadVertexProperty_0_in.csv";
   string format_string = "%d,%d,%d,%d,%d,%d,%d,%d,%d,%d,%f,%f,%d,%d,%d,%d,%d,%d,%d,%d,%d,%d\n";
   sim_event_read_vertex_property_t sim_event;
   pipeline_data_t in_data;
@@ -136,7 +127,6 @@ timeprecision 1ns;
   logic iteration_reset;
 `endif
 `ifdef READ_TEMP_VERTEX_PROPERTY
-  string trace_file = "/home/jliu128/cs598/cs598jt/trace/ReadTempVertexProperty_0_in.csv";
   string format_string = "%d,%d,%d,%d,%d,%d,%d,%d,%d,%d,%f,%f,%d,%d,%d,%d,%d,%d,%d\n";
   sim_event_read_temp_vertex_property_t sim_event;
   pipeline_data_t in_data;
@@ -146,7 +136,6 @@ timeprecision 1ns;
   logic [63:0] mem_result; 
 `endif
 `ifdef APPLY
-  string trace_file = "/home/jliu128/cs598/cs598jt/trace/Apply_0_in.csv";
   string format_string = "%d,%d,%d,%d,%d,%d,%d,%d,%d,%d,%f,%f,%d,%d,%d,%d,%d,%d\n";
   sim_event_apply_t sim_event;
   pipeline_data_t in_data;
@@ -155,7 +144,6 @@ timeprecision 1ns;
   logic ready; 
 `endif
 `ifdef WRITE_VERTEX_PROPERTY
-  string trace_file = "/home/jliu128/cs598/cs598jt/trace/WriteVertexProperty_0_in.csv";
   string format_string = "%d,%d,%d,%d,%d,%d,%d,%d,%d,%d,%f,%f,%d,%d,%d,%d,%d,%d\n";
   sim_event_write_vertex_property_t sim_event;
   pipeline_data_t in_data;
@@ -872,7 +860,7 @@ rand_mem_write_module A4 (
       end
     end
     if(done == 1) begin 
-      $display("Ending sim: done = %d", done);
+      $display("Ending sim @ %d ticks: done = %d", curr_tick, done);
       $fclose(fd);
       $finish;
     end
