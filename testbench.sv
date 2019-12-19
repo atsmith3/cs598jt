@@ -17,11 +17,13 @@
 //`define REDUCE
 //`define WRITE_TEMP_DST_PROPERTY
 //`define READ_VERTEX_PROPERTY
-`define READ_TEMP_VERTEX_PROPERTY
+//`define READ_TEMP_VERTEX_PROPERTY
 //`define APPLY
 //`define WRITE_VERTEX_PROPERTY
 
 //`define DEBUG
+
+`define STRINGIFY(x) `"x`"
 
 module tb;
 
@@ -112,7 +114,8 @@ timeprecision 1ns;
   logic ready; 
 `endif
 `ifdef WRITE_TEMP_DST_PROPERTY
-  string trace_file = "/home/jliu128/cs598/cs598jt/trace/WriteTempDstProperty_0_in.csv";
+  string trace_file = `STRINGIFY(`TRACE_PATH);
+  //string trace_file = "/home/jliu128/cs598/cs598jt/trace/WriteTempDstProperty_0_in.csv";
   string format_string = "%d,%d,%d,%d,%d,%d,%d,%d,%d,%d,%f,%f,%d,%d,%d,%d,%d\n";
   sim_event_write_temp_dst_property_t sim_event;
   pipeline_data_t in_data;

@@ -59,7 +59,6 @@
 # ignore Quartus II generated folders
 */db/
 */incremental_db/
-*/simulation/
 */timing/
 */testbench/
 */*_sim/
@@ -71,5 +70,10 @@ PLLJ_PLLSPE_INFO.txt
 # Vim
 *.swp
 
+*.wlf
+transcript
 trace/*
+output_files/*
 simulation/modelsim/*
+!simulation/modelsim/*.do
+!simulation/modelsim/*.sh
