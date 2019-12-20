@@ -6,6 +6,9 @@
 //`define PROCESS_EDGE
 //`define REDUCE
 //`define APPLY
+//`define bfs
+//`define cc
+//`define sssp
 
 module comp #(
     parameter data_width = 64
@@ -48,26 +51,68 @@ logic empty_i;
 
 always_comb begin
     `ifdef PROCESS_EDGE
-    // PROCESS_EDGE, msg_data = vertex_data
-    data_result = data_a;
+    // PROCESSi_EDGE, msg_data = vertex_data
+    `ifdef bfs
+        data_result = data_a;
+    `elsif cc
+        data_result = data_a;
+    `else
+        data_result = data_a + data_b;
+    `endif
     `endif
     
     `ifdef REDUCE
     // REDUCE, vertex_dst_tmp_data = msg_data
-    data_result = data_b;
+    `ifdef bfs    
+        data_result = data_b;
+    `elsif cc
+        if (data_b < data_a) begin
+            data_result = data_b;
+        end
+        else begin
+            data_result = data_a;
+        end
+    `else 
+        if (data_b < data_a) begin
+            data_result = data_b;
+        end
+        else begin
+            data_result = data_a;
+        end
+    `endif
     `endif
     
     `ifdef APPLY
     // APPLY, if (v_dst != v_dst_tmp), output = v_dst, flag = 1
     // hmm shouldn't the DRAM be updated w/ scratchpad content?
-    if (data_a != data_b) begin
-        data_result = data_a;
-        flag_result = 1'b1;
-    end
-    else begin
-        data_result = data_a;
-        flag_result = 1'b0;
-    end
+    `ifdef bfs
+        if (data_a != data_b) begin
+            data_result = data_a;
+            flag_result = 1'b1;
+        end
+        else begin
+            data_result = data_a;
+            flag_result = 1'b0;
+        end
+    `elsif cc
+        if (data_b < data_a) begin
+            data_result = data_a;
+            flag_result = 1'b1;
+        end
+        else begin
+            flag_result = 1'b0;
+            data_result = data_b;
+        end
+    `else
+        if (data_b < data_a) begin
+            data_result = data_a;
+            flag_result = 1'b1;
+        end
+        else begin
+            flag_result = 1'b0;
+            data_result = data_b;
+        end
+    `endif
     `endif
 end
 

@@ -1,6 +1,6 @@
 `include "types.sv"
 
-`define READ_SRC_PROPERTY
+//`define READ_SRC_PROPERTY
 //`define READ_SRC_EDGES
 //`define READ_DST_PROPERTY
 //`define PROCESS_EDGE
@@ -13,7 +13,7 @@
 //`define APPLY
 //`define WRITE_VERTEX_PROPERTY
 
-module top_level_wrapper #(
+module top_level #(
 `ifdef READ_SRC_PROPERTY
     parameter addr_width = 64
     ,parameter cntr_width = 64
@@ -26,7 +26,7 @@ module top_level_wrapper #(
     parameter addr_width = 64
     ,parameter cntr_width = 64
     ,parameter input_width = addr_width + cntr_width
-    ,parameter data_width = 64*2
+    ,parameter data_width = 128
     ,parameter output_width = data_width + 1
     ,parameter addr_inc = 8
 `endif
@@ -347,7 +347,10 @@ module top_level_wrapper #(
     seq_mem_module P1 (.*);
 `endif
 `ifdef READ_SRC_EDGES
-    seq_mem_module P3 (.*);
+    seq_mem_module #(
+    .data_width(64*2)
+    ,.addr_inc(8)
+    ) P3 (.*);
 `endif
 `ifdef READ_DST_PROPERTY
     rand_mem_read_module P4 (.*);
@@ -380,4 +383,4 @@ module top_level_wrapper #(
     rand_mem_write_module A4 (.*);
 `endif
 
-endmodule: top_level_wrapper
+endmodule: top_level

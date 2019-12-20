@@ -1,4 +1,4 @@
-project_open -force "/home/jliu128/cs598/cs598jt_scripts/graphicionado_rtl.qpf" -revision graphicionado_rtl
+project_open -force "/home/jliu128/cs598jt/graphicionado_rtl.qpf" -revision graphicionado_rtl
 create_timing_netlist -model slow
 create_clock -name clk -period 10.000 [get_ports {clk}]
 derive_clock_uncertainty

@@ -8,7 +8,7 @@
 //-----------------------------------------------------------------------------
 // TESTBENCH
 //-----------------------------------------------------------------------------
-`define READ_SRC_PROPERTY
+//`define READ_SRC_PROPERTY
 //`define READ_SRC_EDGES
 //`define READ_DST_PROPERTY
 //`define PROCESS_EDGE
