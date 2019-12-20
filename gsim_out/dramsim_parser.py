@@ -679,3 +679,6 @@ with open(input_file, "r") as i_f, open(output_file, "w") as o_f:
       csv_line.append(split_line[12])
     elif(split_line[0] == "-Refresh"):
       csv_line.append(split_line[10])
+
+  print(csv_line)
+  writer.writerow(csv_line)
