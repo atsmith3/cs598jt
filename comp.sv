@@ -3,9 +3,9 @@
 //12072019
 
 `include "types.sv"
-//`define P5
-//`define P8
-`define A3
+//`define PROCESS_EDGE
+//`define REDUCE
+//`define APPLY
 
 module comp #(
     parameter data_width = 64
@@ -28,7 +28,7 @@ module comp #(
     ,output logic valid_o // output indicating data is valid
     ,output logic [data_width-1:0] data_o // data for next module
     ,input logic ready_i // input from next module indicating done w/ data
-    `ifdef A3
+    `ifdef APPLY
     // update DRAM?
     ,output logic update_flag
     `endif
@@ -38,7 +38,7 @@ logic [data_width*2-1:0] data_i;
 logic [data_width*2-1:0] data_i_reg = '{default: '0};
 logic [data_width-1:0] data_result;
 //comment flag if not needed
-`ifdef A3
+`ifdef APPLY
 logic flag_result;
 assign update_flag = flag_result;
 `endif
@@ -47,18 +47,18 @@ assign data_i = {data_a, data_b};
 logic empty_i;
 
 always_comb begin
-    `ifdef P5
-    // P5, msg_data = vertex_data
+    `ifdef PROCESS_EDGE
+    // PROCESS_EDGE, msg_data = vertex_data
     data_result = data_a;
     `endif
     
-    `ifdef P8
-    // P8, vertex_dst_tmp_data = msg_data
+    `ifdef REDUCE
+    // REDUCE, vertex_dst_tmp_data = msg_data
     data_result = data_b;
     `endif
     
-    `ifdef A3
-    // A3, if (v_dst != v_dst_tmp), output = v_dst, flag = 1
+    `ifdef APPLY
+    // APPLY, if (v_dst != v_dst_tmp), output = v_dst, flag = 1
     // hmm shouldn't the DRAM be updated w/ scratchpad content?
     if (data_a != data_b) begin
         data_result = data_a;
@@ -74,7 +74,7 @@ end
 assign ready_o = empty_i;
 assign valid_o = ~empty_i;
 
-`ifdef A3
+`ifdef APPLY
 //comment flag if not needed
 assign data_o = {data_result, flag_result};
 `else

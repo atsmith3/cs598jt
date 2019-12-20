@@ -8,7 +8,7 @@
 //-----------------------------------------------------------------------------
 // TESTBENCH
 //-----------------------------------------------------------------------------
-//`define READ_SRC_PROPERTY
+`define READ_SRC_PROPERTY
 //`define READ_SRC_EDGES
 //`define READ_DST_PROPERTY
 //`define PROCESS_EDGE
@@ -169,7 +169,7 @@ timeprecision 1ns;
 //    .p_stall_can_accept(),
 //    .o_data()
 //  );
-seq_mem_module P1 (
+seq_mem_module top (
     .clk(clk)
     ,.rst(reset)
     ,.valid_i(iteration_reset)//valid
@@ -190,7 +190,7 @@ seq_mem_module P1 (
 seq_mem_module #(
     .data_width(64*2)
     ,.addr_inc(8)
-    ) P3 (
+    ) top (
     .clk(clk)
     ,.rst(reset)
     ,.valid_i(valid)//valid
@@ -208,7 +208,7 @@ seq_mem_module #(
 );
 `endif
 `ifdef READ_DST_PROPERTY
-rand_mem_read_module P4 (
+rand_mem_read_module top (
     .clk(clk)
     ,.rst(reset)
     ,.data_i(in_data.vertex_dst_id_addr)
@@ -224,7 +224,7 @@ rand_mem_read_module P4 (
 );
 `endif
 `ifdef PROCESS_EDGE
-comp P5 (
+comp top (
     .clk(clk)
     ,.rst(reset)
     ,.data_a(in_data.vertex_data)
@@ -238,7 +238,7 @@ comp P5 (
 );
 `endif
 `ifdef CONTROL_ATOMIC_UPDATE
-dep_check P6 (
+dep_check top (
     .clk(clk)
     ,.rst(reset)
     ,.data_check_a(p7_dst_id)
@@ -254,7 +254,7 @@ dep_check P6 (
 );
 `endif
 `ifdef READ_TEMP_DST_PROPERTY
-rand_mem_read_module P7 (
+rand_mem_read_module top (
     .clk(clk)
     ,.rst(reset)
     ,.data_i(in_data.vertex_dst_id_addr)
@@ -270,7 +270,7 @@ rand_mem_read_module P7 (
 );
 `endif
 `ifdef REDUCE
-comp P8 (
+comp top (
     .clk(clk)
     ,.rst(reset)
     ,.data_a(in_data.vertex_temp_dst_data)
@@ -284,7 +284,7 @@ comp P8 (
 );
 `endif
 `ifdef WRITE_TEMP_DST_PROPERTY
-rand_mem_write_module P9 (
+rand_mem_write_module top (
     .clk(clk)
     ,.rst(reset)
     ,.data_i({in_data.vertex_dst_id_addr, in_data.vertex_temp_dst_data})
@@ -298,7 +298,7 @@ rand_mem_write_module P9 (
     );
 `endif
 `ifdef READ_VERTEX_PROPERTY
-seq_mem_module A1 (
+seq_mem_module top (
     .clk(clk)
     ,.rst(reset)
     ,.valid_i(iteration_reset)//valid
@@ -316,7 +316,7 @@ seq_mem_module A1 (
 );
 `endif
 `ifdef READ_TEMP_VERTEX_PROPERTY
-rand_mem_read_module A2 (
+rand_mem_read_module top (
     .clk(clk)
     ,.rst(reset)
     ,.data_i(in_data.vertex_dst_id_addr)
@@ -332,7 +332,7 @@ rand_mem_read_module A2 (
 );
 `endif
 `ifdef APPLY
-comp A3 (
+comp top (
     .clk(clk)
     ,.rst(reset)
     ,.data_a(in_data.vertex_dst_data)
@@ -347,7 +347,7 @@ comp A3 (
 );
 `endif
 `ifdef WRITE_VERTEX_PROPERTY
-rand_mem_write_module A4 (
+rand_mem_write_module top (
     .clk(clk)
     ,.rst(reset)
     ,.data_i({in_data.updated, address, in_data.vertex_dst_data})
