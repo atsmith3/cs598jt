@@ -4,12 +4,12 @@
 
 `include "types.sv"
 
-`define A4
+//`define WRITE_VERTEX_PROPERTY
 
 module rand_mem_write_module #(
     parameter addr_width = 64
     ,parameter data_width = 64
-    `ifdef A4
+    `ifdef WRITE_VERTEX_PROPERTY
     ,parameter input_width = 1 + addr_width + data_width
     `else
     ,parameter input_width = addr_width + data_width
@@ -39,7 +39,7 @@ module rand_mem_write_module #(
 logic [input_width-1:0] data_i_reg = '{default: '0};
 logic empty_i;
 
-`ifdef A4
+`ifdef WRITE_VERTEX_PROPERTY
 logic update_flag;
 assign update_flag = data_i_reg[input_width-1];
 `endif
@@ -47,7 +47,7 @@ assign update_flag = data_i_reg[input_width-1];
 assign ready_o = empty_i & done;
 //assign mem_read = ~empty_i & done;
 
-`ifdef A4
+`ifdef WRITE_VERTEX_PROPERTY
 assign mem_write = ~empty_i & update_flag;
 `else
 assign mem_write = ~empty_i;
